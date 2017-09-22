@@ -1,0 +1,175 @@
+\jxhj{%教学后记
+	}
+\skrq{%授课日期
+	2017年5月15日 4-5节}
+\ktmq{%课题名称
+	 孔系变量编程}
+\jxmb{%教学目标，每行前面要加 \item
+	\item 掌握孔系的宏程序加工方法；
+	\item 掌握孔系的编程思路；
+	\item 掌握循环嵌套的使用；
+	\item 分清Fanuc与Siemens的指令格式。 }
+\jxzd{%教学重点，每行前面要加 \item
+	\item 孔系的宏程序；
+	\item 孔系的编程思路。 }
+\jxnd{%教学难点，每行前面要加 \item
+	\item 孔系的编程思路。 }
+\jjff{%教学方法
+	通过讲述、举例、演示法来说明；}
+
+\makeshouye %制作教案首页
+
+%%%%教学内容
+\subsection{组织教学}
+\begin{enumerate}[\hspace{2em}1、]
+	\item 集中学生注意力；
+	\item 清查学生人数；
+	\item 维持课堂纪律；
+\end{enumerate}
+\subsection{复习导入及主要内容}
+\begin{enumerate}[1、]
+	\item 加工轮廓的处理;
+	\item 极坐标;
+	\item 加工工序。
+\end{enumerate}
+
+
+\subsection{教学内容及过程}
+
+
+\subsubsection{在Fanuc上用G91+K来实现孔系加工}
+
+\begin{lstlisting}[language=C]
+O0001
+G54G17G40G49G90
+M3S500
+G1Z30.F2000
+X0Y0
+G99G81X20.Y20.Z-20.R5.F80 K6
+G1Z30.F2000
+M5
+M30
+\end{lstlisting}
+
+\subsubsection{宏程序来实现}
+
+\begin{lstlisting}[language=C]
+#24=  圆周圆心的X坐标绝对值
+#25=  圆周圆心的Y坐标绝对值 
+#26=  孔深Z坐标绝对值 
+#18=  快速趋近点R坐标
+#9=   切削进给速度F
+#4=   圆半径1
+#1=   第一孔的角度
+#2=   增量角B
+#11=  孔数H
+G54G17G40G49G90
+M3S800
+G52 X#24 Y#25
+G1 Z30.F2000
+#8=1
+WHILE[#8LE#11] DO1
+#5=#4*COS[#1+[#8-1]*#2]
+#5=#4*SIN[#1+[#8-1]*#2]
+G99G81X#5Y#6Z#26R#18F#9
+#8=#8+1
+END1;
+G1Z30.F2000
+G52 X0 Y0
+M5
+M30
+\end{lstlisting}
+
+
+\subsubsection{方形阵列孔加工}
+
+\begin{lstlisting}[language=C]
+#1= 矩阵孔群横向中心连线与X轴的夹角
+#2= 矩阵孔群横向中心与纵向中心连线角度
+#3= 矩阵横向孔中心距
+#4= 矩阵纵向孔中心距
+#5= 矩阵横向孔数
+#6= 矩阵纵向孔数
+#9= 切削进给速度 Feed
+#18= 固定循环中快速走近R点Z坐标
+#24= 圆心X坐标
+#25= 圆心Y坐标
+#26= 孔深
+G54G17G40G49G90
+M3S500
+G1Z30.F2000
+G52 X#24 Y#25
+G68 X0 Y0 R#1
+#10=1
+WHILE[#10LE#6]DO1
+#11=1 
+WHILE[#11LE#6]DO2
+IF [[#10AND1]EQ0] GOTO1
+#12=#3*[#11-1]+#4*COS[#2]*[#10-1]
+#13=#4*SIN[#2]*[#10-1]
+GOTO5
+N1 #12=#3*[#5-#11]+#4*COS[#2]*[#10-1]
+#13=#4*SIN[#2]*[#10-1]
+N5 G99 G81 X#12 Y#13 Z#26 r#18 F#9
+#11=#11+1
+END2
+#10=#10+1
+END1
+G80G1Z30.F2000
+G69
+G52 X0 Y0
+M5
+M30
+\end{lstlisting}
+
+\subsubsection{圆形阵列孔加工}
+
+\begin{lstlisting}[language=C]
+O0001
+#1=40
+#2=45
+#3=8
+#4=10
+#5=5
+S1000M3
+G54G90  G1 X0 Y0 Z30
+G16
+#6=1
+WHILE[#6LE#3]DO1
+#7=1
+WHILE[#7LE#5]DO2
+#8=#1/2+[#7-1]*#4
+#9=[#6-1]*#2
+G99G81 X#8 Y#9 Z-6 R1 F80
+#7=#7+1
+END2
+#6=#6+1
+END1
+G80G1Z30.F2000
+G15
+M5
+M30
+\end{lstlisting}
+
+\subsubsection{混合孔的加工}
+
+略
+
+
+
+\subsection{课堂小结}
+\begin{enumerate}[1、]
+	\item 在Fanuc上用G91+K来实现孔系加工;
+	\item 宏程序来实现;
+	\item 方形阵列孔加工；
+	\item 圆形阵列孔加工；
+	\item 混合孔的加工。
+\end{enumerate}
+
+\vfill
+\subsection{布置作业}
+\begin{enumerate}[1、]
+	\item 写出上面的程序；
+	\item 从习题集上选做一个。
+\end{enumerate}
+\vfill

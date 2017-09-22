@@ -1,0 +1,201 @@
+%%%%%%%%------------------------------------------------------------------------
+%%%% 日常所用宏包
+
+%% 控制页边距
+\usepackage[papersize={370mm,260mm},top=2.cm, bottom=2cm, left=2.cm, right=2.cm,includefoot]{geometry}
+
+%% 控制项目列表
+\usepackage{enumerate}
+
+%% 多栏显示
+\usepackage{multicol}
+
+%% hyperref宏包，生成可定位点击的超链接，并且会生成pdf书签
+%\usepackage[%
+%    pdfstartview=FitH,%
+%    CJKbookmarks=true,%
+%    bookmarks=true,%
+%    bookmarksnumbered=true,%
+%    bookmarksopen=true,%
+%    colorlinks=true,%
+%    citecolor=blue,%
+%    linkcolor=blue,%
+%    anchorcolor=green,%
+%    urlcolor=blue%
+%]{hyperref}
+
+%% 控制标题
+%\usepackage{titlesec}
+
+%% 控制表格样式
+%\usepackage{booktabs}
+
+%% 控制目录
+%\usepackage{titletoc}
+
+%% 控制字体大小
+%\usepackage{type1cm}
+
+%% 首行缩进，用\noindent取消某段缩进
+%\usepackage{indentfirst}
+
+%% 支持彩色文本、底色、文本框等
+\usepackage{color,xcolor}
+
+%%%% 基本插图方法
+%% 图形宏包
+\usepackage{graphicx}
+
+%% 多个图形并排，参加lnotes.pdf
+\usepackage{subfig}
+
+% \begin{figure}[htbp]               %% 控制插图位置
+%   \setlength{\abovecaptionskip}{0pt}
+%   \setlength{\belowcaptionskip}{10pt}
+                                     %% 控制图形和上下文的距离
+%   \centering                       %% 使图形居中显示
+%   \includegraphics[width=0.8\textwidth]{CTeXLive2008.jpg}
+                                     %% 控制图形显示宽度为0.8\textwidth
+%   \caption{CTeXLive2008安装过程} \label{fig:CTeXLive2008}
+                                     %% 图形题目和交叉引用标签
+% \end{figure}
+%%%% 基本插图方法结束
+
+%%%% pgf/tikz绘图宏包设置
+\usepackage{pgf,tikz}
+\usetikzlibrary{shapes,automata,snakes,backgrounds,arrows}
+\usetikzlibrary{mindmap}
+
+%%%% fancyhdr设置页眉页脚
+%% 页眉页脚宏包
+\usepackage{fancyhdr}
+\pagestyle{plain}
+
+\usepackage{tabu}
+\usepackage{multirow}
+\usepackage{calc,marvosym,ifthen,fancybox,url,layout}
+
+\newcolumntype{M}[1]{>{\zihao{-4} \centering\arraybackslash}m{#1}}
+\newcolumntype{N}{@{}m{0pt}@{}}
+
+\setlength{\parindent}{0pt}
+
+\newcommand{\xn}[1]{\gdef\xnNR{#1}} %学年
+\newcommand{\xq}[1]{\gdef\xqNR{#1}} %学期
+\newcommand{\xb}[1]{\gdef\xbNR{#1}} %系部
+\newcommand{\zy}[1]{\gdef\zyNR{#1}} %专业
+\newcommand{\bj}[1]{\gdef\bjNR{#1}} %班级
+\newcommand{\kc}[1]{\gdef\kcNR{#1}} %课程
+\newcommand{\skzs}[1]{\gdef\skzsNR{#1}} %上课周数
+\newcommand{\zxs}[1]{\gdef\zxsNR{#1}} %周学时
+
+\newcommand{\jk}[1]{\gdef\jkNR{#1}} %讲课
+\newcommand{\sy}[1]{\gdef\syNR{#1}} %实验
+\newcommand{\lljk}[1]{\gdef\lljkNR{#1}} %理论讲课
+\newcommand{\sx}[1]{\gdef\sxNR{#1}} %实训
+\newcommand{\sxlljk}[1]{\gdef\sxlljkNR{#1}} %实习理论讲课
+\newcommand{\scsx}[1]{\gdef\scsxNR{#1}} %生产实习
+\newcommand{\kh}[1]{\gdef\khNR{#1}} %考核
+\newcommand{\jd}[1]{\gdef\jdNR{#1}} %机动
+\newcommand{\hj}[1]{\gdef\hjNR{#1}} %机动
+
+\newcommand{\ywcks}[1]{\gdef\ywcksNR{#1}} %已完成课时
+\newcommand{\ylks}[1]{\gdef\ylksNR{#1}} %余留课时
+\newcommand{\khfs}[1]{\gdef\khfsNR{#1}} %考试方式
+\newcommand{\jcmc}[1]{\gdef\jcmcNR{#1}} %教材名称
+
+\newcommand{\ud}[2]{\underline{\makebox[#1]{\textbf{#2}}} }
+
+\newcommand{\jhsy}{ %生成计划首页
+\setlength{\columnsep}{50pt } 
+\columnseprule=0.4pt \twocolumn
+
+\begin{center}
+	\begin{tabular}{M{15em}M{4cm}N}
+		\parbox{12em}{ \linespread{0.2}\zihao{-4} \bf \heiti	
+			\makebox[12em][s]{湖南九嶷职业技术学院}\\[0.1cm]
+			\makebox[12em][s]{湖南潇湘技师学院}
+		}
+		&  \zihao{1} \heiti \makebox[4cm][s]{\rule{0pt}{0.9cm}授课计划}&\\
+	\end{tabular}
+	\vspace{0.8cm}
+	
+	\zihao{3} \bf  \underline{~~~\xnNR~~~} 学年  \underline{~~~\xqNR~~~}  学期
+\end{center}
+
+\begin{tabular}{Nllll}
+	&系部：\underline{\makebox[12em]{\textbf{\xbNR}}}& 
+	专业： \underline{\makebox[7em]{\textbf{\zyNR}}}&
+	班级： \underline{\makebox[9em]{\textbf{\bjNR}}}& \\[2ex]
+	&课程：\underline{\makebox[12em]{\textbf{\kcNR}}}&
+	上课周数：\underline{\makebox[5em]{\textbf{\skzsNR}}} &
+	周学时：  \underline{\makebox[8em]{\textbf{\zxsNR}}} & 
+\end{tabular}
+\vspace{1ex}
+
+{\bf 本学期课时分配表}
+\vspace{1ex}
+
+%\hspace{-0.5em}
+\begin{tabu}{|M{4em}|M{2.5em}|M{2.5em}|M{2.5em}|M{3em}|M{2.5em}|M{2.5em}|M{2.5em}|M{2.5em}|M{4em}|N}
+	\hline 
+	教学\linebreak 模式 & \multicolumn{2}{c|}{理论}& \multicolumn{2}{c|}{一体化} & \multicolumn{2}{c|}{实习}&  \multirow{2}{1em}{ 考\vspace{1cm} 核 }& \multirow{2}{1em}{ 机\vspace{1cm} 动 }  &
+	\multirow{2}{1em}{  合\vspace{1cm} 计 } & \\[4.5ex]
+	\cline{1-7} 
+	教学\linebreak 形式& 讲\linebreak\linebreak 课 & 实\linebreak\linebreak  验 & 理\linebreak 论\linebreak 讲\linebreak 课& 实\linebreak\linebreak 训 & 理\linebreak 论\linebreak 讲\linebreak 课 & 生\linebreak 产\linebreak 实\linebreak 习 &&&&\\ [12ex]
+	\hline 
+	课时&\jkNR &\syNR &\lljkNR &\sxNR &\sxlljkNR &\scsxNR &\khNR&\jdNR &\hjNR & \\[7ex]
+	\hline 
+\end{tabu} 
+
+~\vspace{1ex}
+
+说明：与本课程无关教学模式的各项各打×
+\vspace{0.5ex}
+
+备注：~~
+\begin{minipage}[t]{15cm}\vspace{-1.25em}
+	\begin{enumerate}[1、\hspace{-5pt}]
+		\item 本课程以前完成学时数：\underline{\makebox[23em]{\textbf{\ywcksNR}}}
+		\item 本课程在以后学期尚余留时数：\underline{\makebox[20em]{\textbf{\ylksNR}}}        
+		\item 本课程本学期列为考试（考查）课程：\underline{\makebox[17em]{\textbf{\khfsNR}}} 
+		\item 本课程使用教材名称： \underline{\makebox[24em]{\textbf{\jcmcNR}}}
+	\end{enumerate}
+\end{minipage}
+\vspace{0.5ex}
+
+\setlength{\baselineskip}{1.5\baselineskip}
+\makebox[5em][s]{任课教师}：\ud{10em}{}  \hspace{1em} 编写日期：\ud{5.5em}{}年\ud{3em}{}月\ud{3em}{}日\\
+\makebox[5em][s]{教研室主任}：\ud{10em}{}  \hspace{1em} 编写日期：\ud{5.5em}{}年\ud{3em}{}月\ud{3em}{}日\\
+\makebox[5em][s]{系主任}：\ud{10em}{}  \hspace{1em} 编写日期：\ud{5.5em}{}年\ud{3em}{}月\ud{3em}{}日\\
+\makebox[5em][s]{教务处}：\ud{10em}{}  \hspace{1em} 编写日期：\ud{5.5em}{}年\ud{3em}{}月\ud{3em}{}日\\
+\makebox[5em][s]{分管领导}：\ud{10em}{}  \hspace{1em} 编写日期：\ud{5.5em}{}年\ud{3em}{}月\ud{3em}{}日\\
+\pagebreak
+}
+
+\newcolumntype{L}[1]{>{\zihao{-4} \arraybackslash}m{#1}}
+ \newenvironment{jxjhb}{
+	\newpage \noindent
+	
+	
+	\begin{center}
+		\begin{tabu}{M{12em}M{6cm}N}
+		\parbox{12em}{\linespread{0.2}
+				\zihao{-4} \bf \heiti	\makebox[12em][s]{湖南九嶷职业技术学院}\\[0.1cm]
+				\makebox[12em][s]{湖南潇湘技师学院}
+			}
+			&  \zihao{1} \heiti \makebox[8cm][s]{\rule{0pt}{0.9cm}教师学期授课计划}&\\
+		\end{tabu}
+	\end{center}
+	
+	\begin{tabu}{|>{\centering}M{1.5cm}|L{6cm}|L{9cm}|>{\centering}M{4cm}|>{\centering}M{5cm}|>{\centering}M{2cm}|>{\centering}M{2.cm}|N}
+		\hline 
+		周次&\centering 授课章节内容摘要&\centering 教学 要求& 教具及实验\par 实习材料& 作业及参考材料& 教学\par 时数& 备注& \\[6ex] \hline }
+	{ 
+	\end{tabu} 
+	\vspace{4ex}
+}
+
+\newcommand{\shqz}{ 
+	
+	\hspace{10cm}  {\zihao{3}    任课教师：\ud{8em}{} \hfill 教研室主任：\ud{8em}{}  \hfill 系主任： \ud{8em}{}  \hfill}} %审核签字

@@ -1,0 +1,86 @@
+\jxhj{%教学后记
+	}
+\skrq{%授课日期
+	2017年3月13日 4-5节}
+\ktmq{%课题名称
+	椭圆编程 }
+\jxmb{%教学目标，每行前面要加 \item
+	\item 掌握用循环来实现Z向分层；
+	\item 掌握椭圆的宏程序思路；
+	\item 掌握椭圆的宏程序。 }
+\jxzd{%教学重点，每行前面要加 \item
+	\item 循环来实现Z向分层；
+	\item 椭圆的宏程序思路。 }
+\jxnd{%教学难点，每行前面要加 \item
+	\item 椭圆的宏程序思路。 }
+\jjff{%教学方法
+	通过讲述、举例、演示法来说明；}
+
+\makeshouye %制作教案首页
+
+%%%%教学内容
+\subsection{组织教学}
+\begin{enumerate}[\hspace{2em}1、]
+	\item 集中学生注意力；
+	\item 清查学生人数；
+	\item 维持课堂纪律；
+\end{enumerate}
+\subsection{复习导入及主要内容}
+\begin{enumerate}[\hspace{2em}1、]
+\item Z向分层；
+\item IF THEN 指令；
+\item Z向分层的应用；
+\end{enumerate}
+\subsection{教学内容及过程}
+\subsubsection{非圆曲线的拟合加工} %\marginpar{举例说明}
+ 数控机床一般中能作直线插补和圆弧插补. 遇到工件轮廓是非圆曲线的零件时. 常用直线段或圆弧去逼近非圆曲线. 即拟合加工. 只要拟合误差在允许的范围内就行了.
+ 
+ \paragraph{分段}
+ 等插补段法(求最小曲率半径Rmin, 求在允许插补误差时的弦长,求坐标)
+ 
+ 等插补误差法(以起点建立误差圆, 求该圆与曲线的公切线的斜率, 以起点作公切线的平行线, 计算坐标.)
+ 
+ 其它方法: (等角度)
+ 
+\paragraph{用直线拟合}
+ 弦线, 割线, 切线
+ \paragraph{圆弧逼近法}
+ 通过三点作圆(这三点是上面分段中的三个点)
+ 
+ 计算圆心
+ 
+ 计算坐标
+ 
+\subsubsection{椭圆的数学模型}
+\paragraph {参数方程}
+ $$X=A*cos(a)$$
+ $$Y=B*sin(a)$$
+  使用角度控制
+\paragraph{ 普通方程}
+ $$ \frac{X^2}{A^2} + \frac{Y^2}{B^2} =1 $$
+  可使用$X$控制, 常用于车床
+\subsubsection{流程控制}
+\subsubsection{椭圆的宏程序}
+\begin{verbatim}
+N100 #3=#3-1
+G1 X[#1*COS[#3]] Y[#1*SIN[#3]]
+IF [#1 GT -180] GOTO100
+\end{verbatim}
+\subsubsection{GOTO指令}
+无条件转移。
+ 
+\subsection{课堂小结}
+
+\begin{enumerate}[1、]
+	\item 非圆曲线的拟合加工;
+	\item 椭圆的数学模型;
+	\item 流程控制
+	\item 椭圆的宏程序
+\end{enumerate}
+
+\vfill
+\subsection{布置作业}
+\begin{enumerate}[1、]
+	\item 编写一个比较通用的外圆加工轮廓。。 
+\end{enumerate}
+\vfill

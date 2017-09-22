@@ -1,0 +1,181 @@
+\jxhj{%教学后记
+	}
+\skrq{%授课日期
+	2017年 | 3月14日|3月21日|3月28日|4月4日 | 1-3节}
+\ktmq{%课题名称
+	 六面圆槽加工}
+\jxmb{%教学目标，每行前面要加 \item
+	\item 掌握槽的下刀方式；
+	\item 掌握六面圆槽的加工工艺；
+	\item  掌握圆槽的宏程序。}
+\jxzd{%教学重点，每行前面要加 \item
+	\item 圆槽的宏程序；
+	\item 六面圆槽的加工工艺。}
+\jxnd{%教学难点，每行前面要加 \item
+	\item 圆槽的宏程序。}
+\jjff{%教学方法
+	通过讲述、举例、演示法来说明；}
+
+\makeshouye %制作教案首页
+
+%%%%教学内容
+\subsection{实习教学要求}
+\begin{compactenum}[\hspace{2em}1、]
+		\item 掌握槽的下刀方式；
+	\item 掌握六面圆槽的加工工艺；
+	\item  掌握圆槽的宏程序。
+\end{compactenum}
+
+\subsection{相关工艺}
+\subsubsection{课题内容}
+在上一个课题加工的50*50*50的正方体上，每面加工$\phi  45$、$\phi  
+35$、$\phi  25$ 的圆槽，深度为5mm。
+
+\subsubsection{平面程序编写}
+
+\begin{lstlisting}
+O2
+T1M6
+#1=0 (初始高度)
+#2=5(终止高度)
+#3=45-5.5(圆的半径)
+G54G17G40G49G90
+G1Z30.F2000
+X-5Y0
+Z5
+ F400
+N10 #1=#1+0.5
+G3X-5Y0I5J0Z-#1
+IF[#1LT#2]GOTO10
+#3=5
+N20#3=#3+0.5
+GIX-#3Y0
+G3I#3
+IF[#3LT#4]GOTO20
+G1Z30.F2000
+M5
+M30
+\end{lstlisting}
+
+
+
+\subsubsection{平面加工工艺}
+\paragraph{加工顺序}
+粗加工顺序
+
+精加工顺序
+\paragraph{装夹方式}
+
+\paragraph{切削用量}
+
+
+\subsection{实习内容及过程}
+
+\subsubsection{集合、组织实习}
+1、清查学生人数
+
+2、文明安全生产讲解
+
+3、实习内容说明
+\subsubsection{开机15分钟}
+1、由组长记录机床相关问题
+
+2、开机前检查仔细
+
+3、空转几分钟预热
+\subsubsection{机床操作及编程}
+1、教师演示基本操作
+
+2、组长安排2人员操作机床(1人操作,1个指导)
+
+3、其他人员自选图形编程
+
+4、每人操作时间不得超过2小时
+
+5、教师巡回指导
+\subsubsection{操作点评及工件检测}
+1、学生操作感想说明及自评
+
+2、教师提问及点评
+
+3、学生对工件自测
+
+4、教师检测及评分
+\subsubsection{准备下课}
+1、清洁数控机床
+
+2、正常关机
+
+3、集合教师点评
+
+\subsection{练习题及作业}
+\begin{compactenum}[1、]
+	\item 小结;
+	\item 基本指令;
+	\item 相关知识
+	\item 机床操作
+	\item 编程思路。
+\end{compactenum}
+
+\vfill
+\subsection{加工准备与加工要求}
+\subsubsection{加工准备}
+\begin{enumerate}[1、]
+	\item 设备：数控铣床、加工中心。
+	\item 材料：45圆钢（Ф82*50）。
+	\item 工具：活动扳手，平行垫铁，百分表，其它常用辅具。
+	\item 
+	量具：外径千分尺（0~25、100~125，0.01），深度千分尺（0~25，0.01），R规。
+	\item 刀具：Ф10、Ф16、Ф14立铣刀、Ф64面铣刀。
+	\item 夹具：三爪自定心卡盘、螺杆压板、平口钳。
+\end{enumerate}
+\subsubsection{课题评分表}
+
+{\noindent
+	%\begin{figure}[!hbtp]
+	%	\centering	
+	\footnotesize
+	\hspace{-3ex} \renewcommand\arraystretch{1.9}
+	\begin{tabu} to 0.45\textwidth {|cc|c|c|c|c|c|c|}
+		\hline  
+		\multicolumn{2}{|c|}{工件编号}  &\multicolumn{2}{c}{} & 
+		\multicolumn{2}{|c}{总得分}   & \multicolumn{2}{|c|}{ }   \\ 
+		\hline 
+		\multicolumn{2}{|c|}{项目与配分} &\parbox{2ex}{序号}  & 技术要求 & 配分 
+		& 评分标准 &  \parbox{4ex}{检测记录}& 得分 \\ 
+		\hline 
+		\multirow{6}{*}{ \parbox{4ex}{工件加工 （80）}} 
+		&\multicolumn{1}{|c|}{A面}  & 1 &面铣  & 10& 超差全扣 & & \\ 
+		\cline{2-8}  
+		&\multicolumn{1}{|c|}{B面}   & 2 &面铣  & 10 & 超差全扣 & & \\ 
+		\cline{2-8} 
+		&\multicolumn{1}{|c|}{C面}  & 3 &面铣  & 10& 超差全扣 & & \\ 
+		\cline{2-8} 
+		&\multicolumn{1}{|c|}{D面}   & 4&面铣  & 10 & 超差全扣 & & \\ 
+		\cline{2-8}  
+		&\multicolumn{1}{|c|}{E面}   & 5&面铣  & 10 & 超差全扣 & & \\ 
+		\cline{2-8}  
+		&\multicolumn{1}{|c|}{F面}   & 6&面铣  & 10 & 超差全扣 & & \\ 
+		\hline 
+		\multicolumn{2}{|c|}{\multirow{2}{*}{\parbox{10ex}{程序与工艺
+					（10\%）} } }&7 &程序正确合理  & 10 & 每错一处扣2分 &  &  \\ 
+		\cline{3-8} 
+		&&8&加工工序卡  &10 &不合理每处扣2分  &&  \\ 
+		\hline 
+		\multicolumn{2}{|c|}{\multirow{2}{*}{\parbox{10ex}{机床操作
+					（10\%）}
+		} } &9 &机床操作规范  & 10& 出错一次扣2分 &  &  \\ 
+		\cline{3-8} 
+		&&10&工件刀具装夹  &10  &出错一次扣2分&&  \\ 
+		\hline 	
+		\multicolumn{2}{|c|}{\multirow{2}{*}{\parbox{10ex}{安全文明生产
+					（倒扣分）}
+		} } &11 &安全操作  & 倒扣 & 
+		\multirow{2}{*}{\parbox{14ex}{安全事故停止操作或酌情扣分}}&  &  \\ 
+		\cline{3-5} \cline{7-8} 
+		&&12&机床整理  &倒扣  &  &  &\\ 
+		\hline 	
+\end{tabu} }
+%\end{figure}
+
+

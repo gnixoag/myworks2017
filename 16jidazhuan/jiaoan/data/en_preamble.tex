@@ -1,0 +1,263 @@
+%%%%%%%%------------------------------------------------------------------------
+%%%% 日常所用宏包
+
+%% 控制页边距
+\usepackage[top=2cm, bottom=2cm, left=2.cm, right=2.cm,includehead,includefoot]{geometry}
+
+%% 控制项目列表
+\usepackage{enumerate}
+
+%% 多栏显示
+\usepackage{multicol}
+
+%% hyperref宏包，生成可定位点击的超链接，并且会生成pdf书签
+\usepackage[%
+    pdfstartview=FitH,%
+    CJKbookmarks=true,%
+    bookmarks=true,%
+    bookmarksnumbered=true,%
+    bookmarksopen=true,%
+    colorlinks=true,%
+    citecolor=blue,%
+    linkcolor=blue,%
+    anchorcolor=green,%
+    urlcolor=blue%
+]{hyperref}
+
+\ctexset {
+	section = {
+		name = {理论},
+		format = \bf \zihao{4} \centering
+	},
+	subsection = {
+		name = {},
+		number = \Roman{subsection},
+		format = \bf \zihao{4} 
+	},
+	subsubsection = {
+		name = {,、\hspace{-0.5em}},
+		number = \chinese{subsubsection},
+		format = \bf \zihao{4} 
+},
+paragraph = {
+name = {（,）\hspace{-0.5em}},
+number = \chinese{paragraph},
+format = \bf \zihao{4} 
+},
+subparagraph = {
+name = {,、\hspace{-0.5em}},
+format = \bf \zihao{4}
+}
+}
+
+\setcounter{secnumdepth}{5}
+
+
+%% 控制目录
+\usepackage{titletoc}
+
+%% 支持彩色文本、底色、文本框等
+\usepackage{color,xcolor}
+
+%%%% 基本插图方法
+%% 图形宏包
+\usepackage{graphicx}
+
+%%%% pgf/tikz绘图宏包设置
+\usepackage{pgf,tikz}
+\usetikzlibrary{shapes,automata,snakes,backgrounds,arrows}
+\usetikzlibrary{mindmap}
+
+%%%% fancyhdr设置页眉页脚
+%% 页眉页脚宏包
+\usepackage{fancyhdr}
+
+%% 页眉页脚风格
+\pagestyle{plain}
+
+%%%% 设置listings宏包用来粘贴源代码
+%% 方便粘贴源代码，部分代码高亮功能
+\usepackage{listings}
+
+%% 所要粘贴代码的编程语言
+%\lstloadlanguages{}
+
+%% 设置listings宏包的一些全局样式
+%% 参考http://hi.baidu.com/shawpinlee/blog/item/9ec431cbae28e41cbe09e6e4.html
+\lstset{
+showstringspaces=false,              %% 设定是否显示代码之间的空格符号
+numbers=left,                        %% 在左边显示行号
+numberstyle=\tiny,                   %% 设定行号字体的大小
+basicstyle=\footnotesize,                    %% 设定字体大小\tiny, \small, \Large等等
+keywordstyle=\color{blue!70}, commentstyle=\color{red!50!green!50!blue!50},
+                                     %% 关键字高亮
+frame=shadowbox,                     %% 给代码加框
+rulesepcolor=\color{red!20!green!20!blue!20},
+escapechar=`,                        %% 中文逃逸字符，用于中英混排
+xleftmargin=2em,xrightmargin=2em, aboveskip=1em,
+breaklines,                          %% 这条命令可以让LaTeX自动将长的代码行换行排版
+extendedchars=false                  %% 这一条命令可以解决代码跨页时，章节标题，页眉等汉字不显示的问题
+}
+%%%% listings宏包设置结束
+
+%% 设定段间距
+\setlength{\parskip}{0.3\baselineskip}
+
+%% 设定行距
+\linespread{1}
+
+\usepackage{tabu} % 用tabu代替 array
+\usepackage{multirow}
+\usepackage{zhnumber}
+\usepackage{calc,marvosym,ifthen,fancybox,url,layout}
+\setcounter{tocdepth}{1}
+\usepackage{paralist}
+
+%给旁注加个黑原点
+\usepackage{wasysym}
+\let\marginparNR\marginpar
+\def\marginpar#1{\marginparNR{\textcolor{red}{ \CIRCLE{}   #1  }}}
+
+%调整列表前后的间距
+\makeatletter
+\let\orig@Enumerate=\enumerate
+\renewenvironment{enumerate}{\orig@Enumerate}{\vspace{-0.5cm}\endlist}
+\let\orig@Itemize=\itemize
+\renewenvironment{itemize}{\orig@Itemize}{\vspace{-0.5cm}\endlist}
+\makeatother
+
+%给目录进行设定
+\titlecontents{section}[0pt]{\addvspace{5pt}\filright}
+{ \thecontentslabel \hspace{0.5em} }
+{}{\titlerule*[8pt]{.}\contentspage}
+
+
+%画边框
+%\def\boxhack{\leavevmode\vbox to0pt{\vss\rlap{\hskip 320pt
+%			\setlength{\unitlength}{1pt}\cornersize*{10pt}\thicklines\fancyoval(365,675)}\vskip -680pt}}
+%\def\boxhackb{\leavevmode\vbox to0pt{\vss\rlap{\hskip 80pt
+%			\setlength{\unitlength}{1pt}\cornersize*{10pt}\thicklines\fancyoval(100,675)}\vskip -680pt}}
+
+%用tikz画边框	
+\def\biankuang{\leavevmode\vbox to0pt{
+		\vss\rlap{\hskip 0.8cm
+			\tikz \draw(4,0)--(0,0)--(0,-22.5)--(17,-22.5)--(17,0)--(4,0)--(4,-22.5);		
+		}\vskip -22.7cm}}
+
+\newcolumntype{M}[1]{>{\zihao{4}\centering\arraybackslash}m{#1}}
+\newcolumntype{N}{@{}m{0pt}@{}}
+
+\newcommand{\ktmq}[1]{\gdef\ktmqNR{#1}}%课题名称
+\newcommand{\jxmb}[1]{\gdef\jxmbNR{#1}}%教学目标
+\newcommand{\jxnd}[1]{\gdef\jxndNR{#1}}%教学难点
+\newcommand{\jxzd}[1]{\gdef\jxzdNR{#1}}%教学重点
+\newcommand{\jjff}[1]{\gdef\jjffNR{#1}}%解决方法
+\newcommand{\jxhj}[1]{\gdef\jxhjNR{#1}}%教学后记
+
+\newcommand{\jc}[1]{\gdef\jcNR{#1}}%教材
+\newcommand{\cks}[1]{\gdef\cksNR{#1}}%参考书
+\newcommand{\jsxm}[1]{\gdef\jsxmNR{#1}}%教师姓名
+\newcommand{\jyszr}[1]{\gdef\jyszrNR{#1}}%教研室主任
+
+\newcommand{\skbc}[1]{\gdef\skbcNR{#1}}%授课班次
+\newcommand{\skrq}[1]{\gdef\skrqNR{#1}}%授课日期
+\newcommand{\biaoti}[1]{\gdef\biaotiNR{#1}}%标题头
+
+\newcounter{thesectionSY}
+
+\newcommand{\makeshouye}{
+	\setcounter{thesectionSY}{\thesection+1}
+	\restoregeometry	
+	\renewcommand{\headrulewidth}{0pt}
+	\pagestyle{fancy}
+	\fancyhead{}
+	\lhead{} 
+	\chead{
+		\begin{tabular}{@{\hspace{1.2cm}}M{7cm}@{\hspace{-0.4cm}}M{8cm}N}
+			\parbox{7cm}{\linespread{0.2}
+				\makebox[7cm][s]{\kaishu \zihao{3} 湖南九嶷职业技术学院}\\ 
+				\makebox[7cm][s]{\kaishu \zihao{3} 湖南潇湘技师学院}
+			}
+			&  \makebox[6cm][s]{\rule{0pt}{0.9cm}\zihao{1} \heiti \kaishu 授课课时计划}\\
+		\end{tabular}
+	}
+	
+	\begin{tabular}{M{2.2cm}|M{7cm}|M{5.8cm}N}
+		\hline
+		\multirow{2}*{
+			\rule{0pt}{1.4cm}\parbox[b]{2.cm}{
+				\centering 课\hfill 程\hfill 章\hfill 节\\及\hfill 主\hfill 题}}& \heiti \biaotiNR\thethesectionSY  &  ~授~课~教~师\hfill {\heiti \zihao{4} \underline{\jsxmNR}}\hfill 签字~~~&\\[0.6cm] \cline{2-3}
+		
+		& \heiti \ktmqNR &  ~教研室主任\hfill {\fangsong \bf \zihao{4} \underline{\jyszrNR}}\hfill 签字~~~&\\[0.6cm]\hline
+		
+		\multicolumn{3}{l}{
+			\begin{minipage}[t][3.7cm][t]{15cm}	
+				\begin{minipage}[t]{2.5cm}
+					\vspace{6pt} \hfill \zihao{4} 教学目标：
+				\end{minipage}\hspace{0.5cm}				
+				\begin{minipage}[t][4.3cm][t]{12cm}
+					\vspace{0pt}\zihao{4} \setlength{\baselineskip}{12pt} 
+					\begin{enumerate}[1、]
+						\jxmbNR
+					\end{enumerate} 
+				\end{minipage} 
+			\end{minipage}
+		}\vspace{0.3cm} &\\ \hline
+		\multicolumn{3}{l}{
+			\begin{minipage}[t][4cm][t]{15cm}
+				\begin{minipage}[t]{2.5cm}
+					\vspace{5pt} \hfill \zihao{4} 教学重点：
+				\end{minipage}\hspace{0.5cm}				
+				\begin{minipage}[t]{12cm}
+					\vspace{0pt} \zihao{4} \setlength{\baselineskip}{12pt} 
+					\begin{enumerate}[1、] \jxzdNR \end{enumerate}
+					\vspace{7pt} 
+				\end{minipage}
+				\vspace{5pt} 
+				\begin{minipage}[t]{2.5cm}
+					\vspace{6pt} \hfill \zihao{4} 教学难点：
+				\end{minipage}\hspace{0.5cm}		
+				\begin{minipage}[t]{12cm}
+					\vspace{0pt} \zihao{4} \setlength{\baselineskip}{12pt} 
+					\begin{enumerate}[1、] \jxndNR \end{enumerate}
+					\vspace{0pt} 	
+				\end{minipage}
+				\begin{minipage}[t]{2.5cm}
+					\vspace{6pt} \hfill \zihao{4} 解决方法：
+				\end{minipage}\hspace{0.5cm}		
+				\begin{minipage}[t]{12cm}
+					\vspace{6pt}\zihao{4} \jjffNR
+				\end{minipage}
+				
+			\end{minipage}
+		} &\\  \hline
+		
+		\multirow{2}*{ 	\rule{0pt}{1.4cm}\parbox[b]{2.cm}{
+				\centering 教\hfill 材\hfill 和\\参\hfill 考\hfill 书 } } & \multicolumn{2}{c}{\zihao{4} \jcNR } &\\[0.6cm] \cline{2-3}
+		&  \multicolumn{2}{c}{\zihao{4} \cksNR } &\\[0.6cm] \hline
+		\multirow{2}*{\rule{0pt}{1.4cm}\parbox[b]{2.cm}{
+				\centering 授\hfill 课\hfill 班\hfill 次\\授\hfill 课\hfill 日\hfill 期 } } & \multicolumn{2}{c}{ \skbcNR } &\\[0.6cm] \cline{2-3}
+		&\multicolumn{2}{c}{ \skrqNR } &\\[0.6cm] \hline
+		
+		\multicolumn{3}{l}{
+			\begin{minipage}[t]{2.5cm}
+				\vspace{0pt} \hfill \zihao{4} 教学后记：
+			\end{minipage}\hspace{0.5cm}				
+			\begin{minipage}[t][4.5cm][t]{12cm}
+				\vspace{0pt}\zihao{4} \jxhjNR
+			\end{minipage} 
+		}\vspace{0.3cm} &\\ \hline	
+	\end{tabular}
+	\newpage
+	\newgeometry{textwidth={\textwidth-150pt},top=2cm,bottom=2cm,right=2.5cm,includehead,includefoot,marginparsep=28pt,marginparwidth=85pt}
+	
+	\reversemarginpar
+	\fancyhead{} 
+	\chead{\hspace{1cm} \kaishu \zihao{1} 教 \hspace{1cm} 案 \hspace{1cm} 纸 }
+	%\lhead{\boxhack \boxhackb } %边框 
+	\lhead{ \biankuang}%边框 
+	\zihao{4}		
+
+	\section{ \ktmqNR }
+}
+

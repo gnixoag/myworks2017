@@ -1,0 +1,254 @@
+%%%% 导言区
+%% 设定纸张大小为A4, 基本字体大小为12pt, 文章题目单独为一页， 
+%% 文档类型为article
+%\documentclass[12pt]{article}
+%
+%%% en_preamble包含基本的宏包配置
+%\input{data1/en_preamble}
+%
+%%% 如果不写中文的话就不需要引用xecjk_preamble里面的配置
+%\input{data1/xecjk_preamble}
+
+%\usepackage{tabu} % 用tabu代替 array
+%\usepackage{multirow}
+%\usepackage{zhnumber}
+%\usepackage{calc,marvosym,ifthen,fancybox,url,layout}
+{
+\clearpage
+\eject \pdfpagewidth=370mm \pdfpageheight=260mm
+\newgeometry{top=2cm, bottom=2cm, left=2.cm, right=-14.cm,includefoot}
+
+\newcolumntype{M}[1]{>{\sihao\centering\arraybackslash}m{#1}}
+\newcolumntype{N}{@{}m{0pt}@{}}
+
+\setlength{\parindent}{0pt}
+
+%% 首页格式
+%\input{data/shouye}
+
+%%%% 导言区结束
+%%%%%%%%------------------------------------------------------------------------
+
+%%%%%%%%------------------------------------------------------------------------
+
+%%%% 正文部分
+%\begin{document}
+\setlength{\columnsep}{30pt } 
+\columnseprule=0pt \twocolumn
+
+\begin{center}
+ \begin{tabular}{M{12em}M{4cm}N}
+	\parbox{12em}{ \linespread{0.2}\zihao{-4} \bf \songti	
+		\makebox[12em][s]{湖南九嶷职业技术学院}\\[0.1cm]
+		\makebox[12em][s]{湖南潇湘技师学院}
+	}
+	&  \zihao{1} \heiti \makebox[4cm][s]{\rule{0pt}{0.9cm}授课计划}&\\
+\end{tabular}
+\vspace{0.8cm}
+
+\zihao{3} \bf  \underline{~~~2016--2017~~~} 学年  \underline{~~~2~~~}  学期
+\end{center}
+
+ \begin{tabular}{Nllll}
+&系部：\underline{\makebox[12em]{\textbf{机电工程系}}}& 
+专业： \underline{\makebox[7em]{\textbf{数控技术}}}&
+班级： \underline{\makebox[9em]{\textbf{15级中数班}}}& \\[2ex]
+&课程：\underline{\makebox[12em]{\textbf{《数控编程与实习》}}}&
+上课周数：\underline{\makebox[5em]{\textbf{17}}} &
+周学时：  \underline{\makebox[8em]{\textbf{2[3](3)}}} & 
+\end{tabular}
+\vspace{0.3ex}
+
+ {\bf 本学期课时分配表}
+\vspace{0.ex}
+
+%\hspace{-0.5em}
+\begin{tabular}{|M{4em}|M{2.5em}|M{2.5em}|M{2.5em}|M{2.5em}|M{2.5em}|M{2.5em}|M{2.5em}|M{2.5em}|M{3em}|N}
+	\hline 
+	教学\par 模式 & \multicolumn{2}{c|}{理论}& \multicolumn{2}{c|}{一体化} & \multicolumn{2}{c|}{实习}&  \multirow{3}{*}{考}& \multirow{3}{*}{机}  &
+	 \multirow{3}{*}{合} & \\[4.5ex]
+	\cline{1-7} 
+	教学 \par  形式& 讲\par  课 & 实\par  验 & 理\par 论\par 讲\par 课& 实\vspace{5.5ex} 训 & 理\par 论\par 讲\par 课 & 生\par 产\par 实\par 习 &\multirow{3}{*}{核}&\multirow{3}{*}{动}&\multirow{3}{*}{计}&\\ [12ex]
+	\hline 
+	 课时&×&×&30&\wuhao [48](48)&×&×&2&\wuhao 2[3](3)&\wuhao 34[51](51)& \\[4ex]
+	\hline 
+\end{tabular} 
+
+~\vspace{0.3ex}
+
+ 说明：与本课程无关教学模式的各项各打×
+\vspace{0.5ex}
+
+ 备注：~~
+\begin{minipage}[t]{15cm}\vspace{-1.25em}
+\begin{enumerate}[1、]
+	\item 本课程以前完成学时数：\underline{\makebox[22em]{\textbf{64[48]{48}}}}
+	\item 本课程在以后学期尚余留时数：\underline{\makebox[19em]{\textbf{[64]{48}  }}}        
+	\item 本课程本学期列为考试（考查）课程：\underline{\makebox[16.8em]{\textbf{理论考试(实习考查)  }}} 
+	\item 本课程使用教材名称： \underline{\makebox[23em]{\textbf{数控机床编程与操作（数控铣床~加工中心分册）}}}
+\end{enumerate}
+\end{minipage}
+\vspace{0.5ex}
+
+\newcommand{\ud}[2]{\underline{\makebox[#1]{\textbf{#2}}} }
+\setlength{\baselineskip}{1.5\baselineskip}
+\makebox[5em][s]{任课教师}：\ud{10em}{}  \hspace{1em} 编写日期：\ud{5.5em}{}年\ud{3em}{}月\ud{3em}{}日\\
+\makebox[5em][s]{教研室主任}：\ud{10em}{}  \hspace{1em} 编写日期：\ud{5.5em}{}年\ud{3em}{}月\ud{3em}{}日\\
+\makebox[5em][s]{系主任}：\ud{10em}{}  \hspace{1em} 编写日期：\ud{5.5em}{}年\ud{3em}{}月\ud{3em}{}日\\
+\makebox[5em][s]{教务处}：\ud{10em}{}  \hspace{1em} 编写日期：\ud{5.5em}{}年\ud{3em}{}月\ud{3em}{}日\\
+\makebox[5em][s]{分管领导}：\ud{10em}{}  \hspace{1em} 编写日期：\ud{5.5em}{}年\ud{3em}{}月\ud{3em}{}日\\
+
+\pagebreak
+
+\begin{center}
+\erhao \hei 学期授课计划说明
+\end{center}
+\xiaosi \setlength{\parindent}{2em} \setlength{\baselineskip}{22pt}
+
+\textbf{一、教学目的与要求：}
+
+本学期主要在上个学期的基础上学习数控编程中的手工编程，要求学生能熟练运用各种编程方法来解决实际问题，充分把自己的能力及智慧通过编程展示出来。为以后走上工作岗位作好准备。
+
+\textbf{二、用教材、参考书}
+
+1、使用教材： 《数控机床编程与操作（数控铣床 加工中心分册）》 沈建峰
+
+2、参考书：《加工中心编程与操作》  科学出版社  刘加孝   主编
+
+\hspace{4.5em}《加工中心操作工》 中国劳动社会保障出版社  杨伟群  主编
+
+\hspace{4.5em}《加工中心考工实训教程》  化学工业出版社   吴明友 主编
+
+\textbf{三、教学措施}
+
+1、采用多媒体、仿真、讨论等教学方法。
+
+2、作业：理论课每周布置一道编程题，仿真每周做习题集上的题目，实习除了完成课题外，还要每个课题写一个实习报告。
+
+3、学生评价采用自评、小组评价、教师评价三结合。
+
+\textbf{四、增删内容}
+
+本计划无增删内容。
+
+\textbf{五、本课程与其他课程的关系}
+
+本课程是专业课，其他课程是基础，为本课服务。先要学习好《数控加工工艺》、《普铣》、《机械制图》、《机械加工原理》、《专业数学》等课程。在这些课程的基础上再来学习本课程就容易多了，希望同学们多复习这些课程。
+
+\textbf{六、课程计划周数：}
+
+授课时间为2--18周（第1周学生生报到注册，第19周考试），周课时8节。
+
+\newpage 
+\onecolumn \setlength{\parindent}{0em}
+
+\begin{center}
+	\begin{tabular}{M{12em}M{4cm}N}
+		\parbox{12em}{\linespread{0.2} 
+			\xiaosi \bf \song	\makebox[12em][s]{湖南九嶷职业技术学院}\\[0.1cm]
+			\makebox[12em][s]{湖南潇湘技师学院}
+		}
+		&  \yihao \hei \makebox[8cm][s]{\rule{0pt}{0.9cm}教师学期授课计划}&\\
+	\end{tabular}
+\end{center}
+ 
+\newcolumntype{M}[1]{>{\xiaosan\arraybackslash}m{#1}}
+\begin{tabular}{|>{\centering}M{1.5cm}|M{6cm}|M{9cm}|>{\centering}M{4cm}|>{\centering}M{5cm}|>{\centering}M{2cm}|>{\centering}M{2.5cm}|N}
+ 	\hline 
+ 周次&\centering 授课章节内容摘要&\centering 教学 要求& 教具及实验\par 实习材料& 作业及参考材料& 教学\par 时数& 备注& \\[4.5ex] \hline
+1& 教师报到、学生报到 变量编程概述		& & & & & 02.13 02.19 & \\[4.5ex] \hline
+2& 理论1、复习导入 & 复习上学期所学内容&自绘示意图1&习题1& 2节 & 02.20 02.26 &  \\[4.5ex] \hline
+3& 理论2、变量编程概述 &掌握变量及用变量来编程 &自绘示意图2&习题2 & 2节 & 02.27 03.05 & \\[4.5ex] \hline
+4& 理论3、变量Z向分层 &掌握Z向分层的应用 &自绘示意图3&习题3 &2节 & 03.06 03.12 & \\[4.5ex] \hline
+5& 理论4、椭圆编程	&掌握椭圆加工及while指令 &自绘示意图4&习题4 & 2节& 03.13 03.19 & \\[4.5ex] \hline
+6& 理论5、椭圆弧编程 	& 掌握椭圆弧的加工&自绘示意图5 &习题5 &2节 & 03.20 03.26 & \\[4.5ex] \hline
+7& 理论6、局部坐标系 & 掌握局部坐标系的使用& 自绘示意图6&习题6 & 2节& 03.27 04.02 & \\[4.5ex] \hline
+8& 理论7、坐标系旋转（一） &掌握坐标系旋转的使用 & 自绘示意图7&习题7 & 2节& 04.03 04.09 & \\[4.5ex] \hline
+9& 理论8、坐标系旋转（二）& 掌握坐标系旋转的编程&自绘示意图8 &习题8 &2节& 04.10 04.16 & \\[4.5ex] \hline
+10& 理论9、极坐标指令 & 掌握极坐标指令的使用& 自绘示意图9& 习题9& 2节& 04.17 04.23& \\[4.5ex] \hline
+ \end{tabular} 
+
+\newpage 
+\begin{center}
+	\begin{tabular}{M{12em}M{4cm}N}
+		\parbox{12em}{\linespread{0.2}
+			\xiaosi \bf \song	\makebox[12em][s]{湖南九嶷职业技术学院}\\[0.1cm]
+			\makebox[12em][s]{湖南潇湘技师学院}
+		}
+		&  \yihao \hei \makebox[8cm][s]{\rule{0pt}{0.9cm}教师学期授课计划}&\\
+	\end{tabular}
+\end{center}
+
+\begin{tabular}{|>{\centering}M{1.5cm}|M{6cm}|M{9cm}|>{\centering}M{4cm}|>{\centering}M{5cm}|>{\centering}M{2cm}|>{\centering}M{2.5cm}|N}
+	\hline 
+	周次&\centering 授课章节内容摘要&\centering 教学 要求& 教具及实验\par 实习材料& 作业及参考材料& 教学\par 时数& 备注& \\[4.5ex] \hline
+	11& 理论10、期中测试 	& 期中测试&自绘示意图10 &习题10 &2节 & 04.24 04.30& \\[4.5ex] \hline
+	12& 五一放假 机动		 & & & & & 05.01 05.07& \\[4.5ex] \hline
+	13& 理论11、试卷讲解 &复习巩固& 自绘示意图11&习题11 &2节 & 05.08 05.14& \\[4.5ex] \hline
+	14& 理论12、孔系变量编程&掌握孔系变量编程技巧& 自绘示意图12&习题12& 2节& 05.15 05.21& \\[4.5ex] \hline
+	15& 理论13、变量周边导圆角 &掌握变量周边导圆角编程技巧 & 自绘示意图13&习题13 & 2节& 05.22 05.28& \\[4.5ex] \hline
+	16& 理论14、自动编程 & 掌握自动编程的流程& 自绘示意图14&习题14 &2节 & 05.29 06.04& \\[4.5ex] \hline
+	17& 理论15、综合练习 & 了解自动编程的技巧&自绘示意图15 &习题15 & 2节& 06.06 06.11& \\[4.5ex] \hline
+	18& 理论16、期末复习 & 复习& 自绘示意图16&习题16& 2节& 06.12 06.18& \\[4.5ex] \hline
+	19& 期末考试、阅卷 & & & & & 06.19 06.25& \\[4.5ex] \hline
+	&  			 & & & & & & \\[4.5ex] \hline
+\end{tabular} 
+\vspace{1ex}
+
+\hspace{10cm}  {\sanhao    任课教师：\ud{8em}{} \hfill 教研室主任：\ud{8em}{}  \hfill 系主任： \ud{8em}{}  \hfill }
+
+
+\newpage 
+\begin{center}
+	\begin{tabular}{M{12em}M{4cm}N}
+		\parbox{12em}{\linespread{0.2}
+			\xiaosi \bf \song	\makebox[12em][s]{湖南九嶷职业技术学院}\\[0.1cm]
+			\makebox[12em][s]{湖南潇湘技师学院}
+		}
+		&  \yihao \hei \makebox[8cm][s]{\rule{0pt}{0.9cm}教师学期授课计划}&\\
+	\end{tabular}
+\end{center}
+
+\begin{tabular}{|>{\centering}M{1.7cm}|M{6cm}|M{9cm}|>{\centering}M{4cm}|>{\centering}M{4.5cm}|>{\centering}M{2.5cm}|>{\centering}M{2.3cm}|N}
+	\hline 
+	周次&\centering 授课章节内容摘要&\centering 教学 要求& 教具及实验\par 实习材料& 作业及参考材料& 教学\par 时数& 备注& \\[4.5ex] \hline
+	1& 学生报到注册 	& & & & & 02.20 02.26& \\[4.5ex] \hline
+	2-4& 实习1、六面四方体加工 &掌握平面的加工\par 掌握六面四方体的加工工艺 &数控机床及\par 相关工具 &实习报告1 & [9](9)& 02.27 03.12& \\[4.5ex] \hline
+	5-8& 实习2、六面圆槽加工 &掌握槽的下刀方式\par 掌握六面圆槽的加工工艺 &数控机床及\par 相关工具 & 实习报告2& [12](12)& 03.13 04.09& \\[4.5ex] \hline
+	9-11& 实习3、椭圆加工 &掌握椭圆的宏程序\par 掌握椭圆的加工工艺 &数控机床及\par 相关工具 &实习报告3 &  [9](9) & 04.10 04.30& \\[4.5ex] \hline
+	12& 五一放假 & & & & & 05.01 05.07& \\[4.5ex] \hline
+	13-17& 实习4、薄壁配合加工 &掌握薄壁的加工工艺\par 掌握配合件的加工工艺&数控机床及\par 相关工具 &实习报告4 &  [15](15)& 05.08 06.11& \\[4.5ex] \hline
+	18& 复习 &复习总结 & & & &06.12 06.18 & \\[4.5ex] \hline
+	19& 期末考试、阅卷 & & & & &06.19 06.25 & \\[4.5ex] \hline
+	&  & & & & & & \\[4.5ex] \hline
+	& & & & & & & \\[4.5ex] \hline
+\end{tabular} 
+\vspace{1ex}
+
+\hspace{10cm}  {\sanhao    任课教师：\ud{8em}{} \hfill 教研室主任：\ud{8em}{}  \hfill 系主任： \ud{8em}{}  \hfill}
+
+
+\eject \pdfpagewidth=210mm \pdfpageheight=297mm
+
+}
+%% 中文习惯是设定首行缩进为2em。注意此设置一定要在document环境之中，这可能与\setlength作用范围相关
+%\setlength{\parindent}{2em}                    
+%
+%\title{Xecjk Template Test}
+%\author{Xiao Hanyu}
+%\maketitle
+%
+%\tableofcontents
+%\listoffigures
+%%\listoftablescontent
+%
+%\include{data/content}
+%\include{data/appendix}
+%
+%%% 加入参考文献支持
+%\bibliography{data/main}
+%%% 解决目录中没有相应的参考文献的条目问题
+%\addcontentsline{toc}{section}{\refname} 
+%\end{document}
+%%%% 正文部分结束
+%%%%%%%%------------------------------------------------------------------------

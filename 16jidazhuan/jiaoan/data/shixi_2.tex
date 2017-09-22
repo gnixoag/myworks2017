@@ -1,0 +1,249 @@
+\jxhj{%教学后记
+}
+\skrq{%授课日期
+2017~~|~~9.11~~|~~1-3节}
+\ktmq{%课题名称
+程序手工录入、编辑及刀路模拟}
+\jxmb{%教学目标，每行前面要加\item 
+\item 掌握MDI键盘各按键的作用；
+\item 掌握程序的录入与编辑；
+\item 认识机床面版及系统界面；
+\item 掌握程序的检查及模拟。
+}
+\jxzd{%教学重点，每行前面要加\item 
+\item 掌握MDI键盘各按键的作用；
+\item 掌握程序的录入与编辑。}
+\jxnd{%教学难点，每行前面要加\item 
+\item 掌握MDI键盘各按键的作用.}
+\jjff{%教学方法
+通过讲述、举例、演示法来说明；}
+
+\makeshouye%制作教案首页
+
+%%%%教学内容
+\subsection{实习教学要求}
+\begin{compactenum}[1、]
+\item 掌握MDI键盘各按键的作用；
+\item 掌握程序的录入与编辑；
+\item 认识机床面版及系统界面；
+\item 掌握程序的检查及模拟。
+\end{compactenum}
+
+
+\subsection{相关工艺}
+\subsubsection{MDI键盘说明}
+\begin{enumerate}[1、]
+\item 地址键：O、N、G……
+      \subitem  EOB——程序段结束符，显示为“；”。
+\item 数据键：1、2、3……
+\item 功能键：
+\subitem POS——在CRT中显示坐标值。
+\subitem PROG——CRT将进入程序编辑和显示界面
+\subitem OFFSET SETTING——CRT将进入加工参数设定界面
+\subitem SYSTEM——CRT将进入系统参数设定界面
+\subitem MESSAGE——CRT将进入信息（如报警）界面
+\subitem CUSTOM-GRAPH——图行模拟
+\item 	编辑键：
+\subitem SHIFT——输入字符切换
+\subitem CAN——删除缓存中的字符
+\subitem INPUT——输入机床数据
+\subitem ALTER——字符替换
+\subitem INSERT——插入字
+\subitem DELETE——删除
+\subitem HELP——获取帮助
+\subitem RESET——系统复位
+	\item 方向及换页键
+
+\end{enumerate}
+
+
+\subsubsection{程序录入与编辑}
+\begin{enumerate}[1、]
+\item 	程序管理
+\subitem 检索程序：\\编辑方式——PROG界面——O+程序号——向下方向键
+
+\subitem 	新建程序：\\编辑方式——PROG界面——O+程序号——INSRT——EOB
+\subitem  删除程序：\\编辑方式——PROG界面——O+程序号——DELET——EXEC
+\subitem 程序信息：\\编辑方式——PROG界面——[DIR]——[DIR+]
+\item 	程序录入编辑
+\subitem 字的检索：\\地址+数据——[SRH↓]    （或直接用方向键）
+\subitem 字的插入：\\检索或定位到插入字之前——地址+数据——INSTRT	（可一次插入多个字）
+\subitem 字的替换：\\检索或定位到插入字之前——地址+数据——ALTER
+\subitem 字的删除：\\检索或定位到插入字之前——DELETE
+\item 	背景编程
+\subitem 进入背景编程：\\PROG——[OPRT]——[BG-EDT]——屏幕的左上显示[BG-EDIT]
+\subitem 退出背景编程：\\PROG——[OPRT]——[BG-EDT]——屏幕的左上 [BG-EDIT] 不显示
+\end{enumerate}
+
+\subsubsection{机床面板按键}
+\begin{enumerate}[1、]
+\item 跳段：使注释符号“/”有效，即跳过“/”开头的程序段
+\item 单段：加工时按循环启动执行一条程序段
+\item 空运行：循环启动时以空运行速度运行，程序中的F无效
+\item 机床锁定：锁定机床，即机床不动，系统模拟运行。
+\item 选择停：使程序中“M01”有效
+\item Z轴锁定：锁定Z轴不动
+
+\end{enumerate}
+
+\subsubsection{程序的图形模拟}
+CUSTOM GRAPH——设定好显示参数——GRAPH——启动程序
+
+注意：可结合上面的自动加工控制功能来模拟
+
+
+\subsubsection{需要回零点的情况}
+回零可重新建立机床坐标系
+\begin{compactenum}[1、]
+\item 开机后;
+\item 机床断电后再次接通数控系统电源;
+\item 紧急停止按钮按下后;
+\item Z轴锁住后;
+\item 机床锁住后;
+\item 超程取消后。
+\end{compactenum}
+
+\subsection{实习内容及过程}
+
+\subsubsection{集合、组织实习}
+1、清查学生人数
+
+2、文明安全生产讲解
+
+3、实习内容说明
+\subsubsection{开机15分钟}
+1、由组长记录机床相关问题
+
+2、开机前检查仔细
+
+3、空转几分钟预热
+\subsubsection{机床操作及编程}
+1、教师演示基本操作
+
+2、组长安排2人员操作机床(1人操作,1个指导)
+
+3、其他人员自选图形编程
+
+4、每人操作时间不得超过2小时
+
+5、教师巡回指导
+\subsubsection{操作点评及工件检测}
+1、学生操作感想说明及自评
+
+2、教师提问及点评
+
+3、学生对工件自测
+
+4、教师检测及评分
+\subsubsection{准备下课}
+1、清洁数控机床
+
+2、正常关机
+
+3、集合教师点评
+
+\subsection{练习题及作业}
+FANUC机床输入P8页的程序
+
+SIEMENS机床输入P85页的程序
+
+宏程序输入：
+
+\begin{lstlisting}
+O1000;
+N10 #100=1.0;
+N20 #101=0;
+N30 #102=361.0;
+N40 #103=45.0;
+N50 #104=25.0;
+N60 #105=-10.0;
+N70 G54 G17 G49 G90 G40;
+N80 M03;
+N90 G00 Z50.0;
+N100    X[#103+30.0] Y0;
+N110    Z5.0;
+N120 G01 Z#105 F100;
+N130 G01 G42 X[#103+15.0] Y-15.0 D01 F200;
+N140 G02 X#103 Y0 R15.0;
+N150 #114=#101;
+N160 WHILE [ #114 LT #102 ] DO1;
+N170 #112=#103*COS[#114];
+N180 #113=#104*COS[#114];
+N190 G01 X[ROUND[#112]] Y[ROUND[#113]];
+N200 #114=#114+#100;
+N210 END1
+N220 G02 X[#103+15.0] Y15.0 R15.0;
+N230 G40 G01 X[#103+30.0] Y0;
+N240 G00 Z50.0;
+N250 M05;
+N260 M30;
+
+\end{lstlisting}
+注意事项
+
+1、不要乱删程序
+
+2、注意安全
+
+
+\vfill
+\subsection{加工准备与加工要求}
+\subsubsection{加工准备}
+\begin{enumerate}[1、]
+\item 设备：数控铣床、加工中心。
+\item 材料：45圆钢（Ф82*50）。
+\item  工具：活动扳手，平行垫铁，百分表，其它常用辅具。
+\item  
+量具：外径千分尺（0~25、100~125，0.01），深度千分尺（0~25，0.01），R规。
+\item  刀具：Ф10、Ф16、Ф14立铣刀、Ф64面铣刀。
+\item  夹具：三爪自定心卡盘、螺杆压板、平口钳。
+\end{enumerate}
+\subsubsection{课题评分表}
+
+{\noindent
+    
+\begin{figure}[!hbtp]
+\centering
+\footnotesize
+%\hspace{-3.4ex}
+\renewcommand\arraystretch{1.9}
+\begin{tabu}to 0.45\textwidth{|cc|c|c|c|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{工件编号}&\multicolumn{2}{c}{}&
+\multicolumn{2}{|c}{总得分}&\multicolumn{2}{|c|}{}\\
+\hline
+\multicolumn{2}{|c|}{项目与配分}&\parbox{2ex}{序号}&技术要求&配分
+&评分标准&\parbox{4ex}{检测记录}&得分\\
+\hline
+
+\multicolumn{2}{|c|}{\multirow{3}{*}{\parbox{10ex}{程序管理（18\%）}}}&1&新建、删除、复制&6&操作不正确全扣&&\\
+\cline{3-8}
+&&2&检索、打开&6&操作不正确全扣&&\\ \cline{3-8}
+&&3&程序信息显示&6&操作不正确全扣&&\\
+\hline
+
+\multicolumn{2}{|c|}{\multirow{1}{*}{\parbox{10ex}{程序录入（20\%）}}}&4&正确录入&20&出错一处扣2分&&\\[.1cm] \hline
+
+\multicolumn{2}{|c|}{\multirow{3}{*}{\parbox{10ex}{程序编辑（15\%）}}}&5&光标定位、复位&5&操作不正确全扣&&\\  \cline{3-8}
+&&6&字的检索、插入&5&操作不正确全扣&&\\ \cline{3-8}
+&&7&字的删除、替换&5&操作不正确全扣&&\\ \hline
+
+\multicolumn{2}{|c|}{\multirow{1}{*}{\parbox{10ex}{程序检查与模拟（10\%）}}}&8&程序检查与模拟&10&操作不正确全扣&&\\[.3cm] \hline
+
+\multicolumn{2}{|c|}{\multirow{2}{*}{\parbox{10ex}{面板系统界面（15\%）}}}&9&操作面板&7&出错一处扣2分&&\\  \cline{3-8}
+&&10&系统界面的认识&8&出错一处扣2分&&\\ \hline
+
+\multicolumn{2}{|c|}{\multirow{4}{*}{\parbox{10ex}{机床操作（22\%）}}}&11&手动、手轮、快速&5&出错一处扣2分&&\\ \cline{3-8}
+&&12&点的定位&7&出错一次扣2分&&\\ \cline{3-8}
+&&13&机床操作规范&5&出错一次扣2分&&\\ \cline{3-8}
+&&14&工件刀具装夹&5&出错一次扣2分&&\\ \hline
+
+\multicolumn{2}{|c|}{\multirow{2}{*}{\parbox{10ex}{安全文明生产
+（倒扣分）}
+}}&15&安全操作&倒扣&
+\multirow{2}{*}{\parbox{14ex}{安全事故停止操作或酌情扣分}}&&\\
+\cline{3-5}\cline{7-8}
+&&16&机床整理&倒扣&&&\\
+\hline
+\end{tabu}
+\end{figure}}
