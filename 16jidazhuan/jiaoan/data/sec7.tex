@@ -1,18 +1,20 @@
 \jxhj{%教学后记
 	}
 \skrq{%授课日期
-	2017年4月10日 4-5节}
+	2017年9月28日 4-5节}
 \ktmq{%课题名称
-	 坐标系旋转1}
+	刀具半径补偿 }
 \jxmb{%教学目标，每行前面要加 \item
-	\item 掌握Fanuc上的坐标系旋转指令；
-	\item 掌握Siemens上的坐标系旋转指令；
-	\item 会使用旋转指令编程。 }
+	\item 了解补偿的意义；
+	\item 掌握G41/G42刀具半径补偿指令的使用；
+	\item 会用G41/G42刀具半径指令编写程序；
+	\item 了解常用切入切出的方法。
+}
 \jxzd{%教学重点，每行前面要加 \item
-	\item Fanuc上的坐标系旋转指令；
-	\item Siemens上的坐标系旋转指令。 }
+	\item 掌握G41/G42刀具半径补偿指令的使用；
+	\item 会用G41/G42刀具半径指令编写程序；}
 \jxnd{%教学难点，每行前面要加 \item
-	\item 使用旋转指令编程。 }
+	\item 会用G41/G42刀具半径指令编写程序；}
 \jjff{%教学方法
 	通过讲述、举例、演示法来说明；}
 
@@ -20,115 +22,188 @@
 
 %%%%教学内容
 \subsection{组织教学}
-\begin{enumerate}[\hspace{2em}1、]
+\begin{enumerate}[1、]
 	\item 集中学生注意力；
 	\item 清查学生人数；
 	\item 维持课堂纪律；
 \end{enumerate}
 \subsection{复习导入及主要内容}
-\begin{enumerate}[\hspace{2em}1、]
-\item 几种坐标系；
-\item Fanuc上的局部坐标系；
-\item Siemens上的局部坐标系；
-\item 应用实例；
+\begin{enumerate}[1、]
+\item 案例分析；
+\item 指令讲解G2/G3；
+\item 编写程序；
+\item 编写程序的基本思路。
 \end{enumerate}
 
+\textbf{案例分析}
+
+在数控铣床或加工中心上加工如图\ref{fig:4-1}所示的零件，试完成程序的编写,已知毛坯为 $\Phi$ 110*30。
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\linewidth,trim=50 150 50 100,clip]{data/image/5-1.jpg}
+    \caption{}
+    \label{fig:4-1}
+\end{figure}
+
+\begin{enumerate}[1、]
+    \item 图样分析；
+    \item 确定加工内容；
+    \item 确定装夹及工件坐标系；
+    \item 确定刀具及切削用量；
+    \item 确定工序及走刀路线；
+    \item 计算点坐标；
+    \item 编写程序单。
+\end{enumerate}
 
 \subsection{教学内容及过程}
 
-\subsubsection{旋转可用于以下几种情况}
-\begin{itemize}
-\item 编程轮廓与工件安装面成一定角度。
-\item 有多个旋转的相同轮廓。
-\item 同一轮廓上有多个旋转的要素。
-\item 其它简化程序的地方。
-\end{itemize}
+\subsubsection{案例分析}
 
-\subsubsection{要素及原理}
-\paragraph{旋转指令的要素}
-\begin{itemize}
-\item 旋转平面
-\item 旋转中心
-\item 旋转角度
-\end{itemize}
-\paragraph{原理}
-在CNC内部对目标点进行转换(我们不用管它)
-$$X’=X*COSA+Y*SINA$$
-$$Y’=Y*COSA-X*SINA$$
+在数控铣床或加工中心上加工如图\ref{fig:4-1}所示的零件，试完成程序的编写,已知毛坯为 $\Phi$ 110*30。
 
-上图中的A为-45度（即从$X------X’$的方向）
-\subsubsection{Fanuc指令格式}
-G17\\
-G18 G68 α\_ β\_ R\_; 坐标系旋转开始\\
-G19\\
-:                  坐标系旋转模式 \\
-:                  ( 坐标系被旋转 )\\
-G69;                坐标系旋转取消模式\\
-说明：\\
-G17(G18或G19): 选择包含有被旋转图形的平面\\
-α\_β\_ :         对应当前平面指令(G17,G18或G19)中的两个轴的绝对指令。\\
-此指令指定了G68后面指定旋转中心的坐标。\\
-R\_    :         正值为逆时针方向的角度位移。参数5400Bit0指定角度位移是绝对值位移或者由G码（G90或G91）来决定绝对值或相对值。\\
-最小输入增量: 0.001度\\
-有效数据范围: -360.000~360.000\\
-注意事项：
-\begin{enumerate}[A、]
-	\item α\_β\_省略时，默认的旋转中心为刀具当前位置。
-\item 程序的开头要加上G69安全注消指令。
-\item 在坐标系旋转后，执行刀具半径补偿、刀具长度补偿、刀具偏置和其它补偿等，要在坐标系旋转取消前取消补偿。
-\item 在坐标系旋转中，不得执行与坐标系有关的指令。如：G27、G28、G29、G30，G52-G59。
-\item  坐标系旋转取消（G69）后的第一个指令必须用绝对值编程。用增量值则不能正确的执行。
-\item 坐标系G68后的第一个指令应用绝对值编程，用增量值编程，则    会以刀具当前为中心进行第二次旋转，如图\ref{旋转}所示：
-\begin{figure}[!hbtp]
-	\centering	\includegraphics[width=0.8\textwidth]{images/7-1}
-	\caption{旋转} \label{旋转}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\linewidth,trim=50 150 50 100,clip]{data/image/5-2.jpg}
+    \caption{}
+    \label{fig:4-1}
 \end{figure}
-\item 有多个旋转时，旋转中的终点应与下一个旋转的启点重合。或者另外增加路径定位。
+
+\begin{enumerate}[1、]
+    \item 图样分析；
+    \item 确定加工内容；
+    \item 确定装夹及工件坐标系；
+    \item 确定刀具及切削用量；
+    \item 确定工序及走刀路线；
+    \item 计算点坐标；
+    \item 编写程序单。
 \end{enumerate}
-\subsubsection{Sienes指令格式}
-功能：在当前的平面G17或G18或G19中执行旋转，值为 RPL=\_，单位为度。\\
-编程：    ROT RPL=\_  可编程旋转，删除以前的偏移，旋转，比例系数和镜像指令。\\
-AROT RPL=\_; 可编程旋转，附加于当前的指令\\
-ROT    没有设定值：删除以前的偏移，旋转，比例系数和镜象\\
-ROT/AROT指令要求一个独立的程序段。
 
-注意：旋转中心始终在工件坐标系原点\\
-工件坐标系原点可以通过TRANS X\_ Y\_ 进行平移。\\
 
-\subsubsection{加工实例}
-在数控机床上加工如图\ref{坐标系旋转}所示的零件，完成加工工艺及加工程序的编写：
-\begin{figure}[!hbtp]
-	\centering	\includegraphics[width=0.8\textwidth]{images/7-2.jpg}
-	\caption{坐标系旋转} \label{坐标系旋转}
+路径特点：
+
+圆弧的圆心角大于180度，显然不能直接用前面的程序。
+
+解决方法：解决方法：
+
+
+
+1、把圆弧分成多个圆心角小于180度的圆弧。
+
+2、掌握圆心角大于180度圆弧指令的使用。
+
+当圆心角大于180度时，用负的半径值来表示。
+
+当圆心角小于180度时，用正的半径值来表示。
+
+Siemens上用CR= 正负规则一样。
+
+
+
+\subsubsection{整圆编程}
+在数控铣床或加工中心上用整圆的路径进行面铣，面铣深度为1mm，试完成加工成型的编写。
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\linewidth,trim=50 150 50 100,clip]{data/image/5-3.jpg}
+    \caption{}
+    \label{fig:5-3}
+\end{figure}
+
+整圆路径也可以分成多个圆弧。
+
+一个整圆路径可以用IJK圆心来编程。
+
+不能用半径来编写一个整圆。
+
+
+I、J、K表示圆心相对于起点的坐标。即：
+
+I=X圆心-X起点
+
+J=Y圆心-Y起点
+
+K=Z圆心-Z起点
+
+I、J、K与G90/G91无关，只与整圆的起点有关。
+
+如： G17 G90 G2 X-50.0 Y-50.0 I50.0 J0;
+
+参考程序：
+
+\begin{lstlisting}
+O0001;
+G54G17G90;
+M3S500;
+G1Z30.0F2000;
+X-65.Y0;
+Z5.0;
+Z-1.0F200;
+X-55.0;
+G2X-55.0Y0I55.0;
+G1X-45.0;
+G2I45.0;
+G1X-35.0;
+G2I-35.0;
+G1X-25.0;
+G2I-25.0;
+G1X-15.0;
+G2I-15.0;
+G1X-5.0;
+G2I5.0;
+G1Z5.0;
+Z30.0F2000;
+M5;
+M30;
+\end{lstlisting}
+
+\subsubsection{I、J、K的应用}
+在数控铣床或加工中心上加工如图所示的零件，试用I、J、K完成程序的编写。
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\linewidth,trim=50 150 50 100,clip]{data/image/5-4.jpg}
+    \caption{}
+    \label{fig:5-4}
 \end{figure}
 参考程序：
 
 \begin{lstlisting}
-02
-G54G17G40G49G90
-M3S500
-G43H1G1Z100.F2000;
-G1X40.Y40.
-Z5.0
-Z0F2000
-G68X0Y0R45.
-M98P221
-G69
+O0001;
+G54G17G90;
+M3S500;
+G1Z30.0F2000;
+X-65.0Y0;
+Z5.0;
+Z-10.0F2000;
+X-25.0;
+Y13.0;
+G2X-13.0Y25.0J13.0;
+G1X13.0;
+G2X25.0Y13.OJ-13.0;
+….
 \end{lstlisting}
 
 
+
+
+
+
+手工编程中，能用半径编程就用半径编程，一般零件图标的是半径，也不容易出错。
+
+自动编程，可以输出I、J、K以增加程序在不同机床通用性。
+
+
+\subsubsection{编写程序的基本思路}
+程序初始化(安全保护)--------辅助准备(换刀,主轴启动,切削液开)--------定位到起刀点--------快速下刀--------工进下刀--------走加工轮廓--------提刀---------快速提刀到安全平面-------程序结束(换刀,主轴停止,切削液关,程序返回等)
 \subsection{课堂小结}
 \begin{enumerate}[1、]
-	\item 旋转可应用场合;
-	\item 要素及原理;
-	\item Fanuc旋转指令格式；
-	\item Sienes旋转指令格式；
-	\item 编程实例。
+\item 案例分析；
+\item 指令讲解；
+\item 编写程序；
+\item 编写程序的基本思路。
 \end{enumerate}
-
 \vfill
 \subsection{布置作业}
 \begin{enumerate}[1、]
-	\item 综合习题一。 
+	\item 自定尺寸，编写加工一个矩形外形的程序？
 \end{enumerate}
 \vfill
