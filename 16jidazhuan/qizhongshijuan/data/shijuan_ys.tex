@@ -200,4 +200,9 @@ columnsep=1.5cm]{geometry}
 		 \ifthenelse{\boolean{print}}{#2}{\hphantom{#2}}  
 	 	 \hspace*{#1 cm}
  	 } }
-
+  
+\newcommand{\jd}[2][4]{\par
+\begin{minipage}[t][#1cm][t]{0.92\linewidth}	
+	\ifthenelse{\boolean{print}}{#2}{}  
+\end{minipage} 
+}	
