@@ -5,15 +5,15 @@
 \ktmq{%课题名称
 	 siemens编程应用}
 \jxmb{%教学目标，每行前面要加 \item
-	\item 掌握孔系的宏程序加工方法；
-	\item 掌握孔系的编程思路；
-	\item 掌握循环嵌套的使用；
-	\item 分清Fanuc与Siemens的指令格式。 }
+	\item 掌握Siemens上子程序指令的使用；
+	\item 掌握Siemens上的编程；
+	\item 掌握Siemens上的半径补偿；
+	\item 掌握相关注意事项。 }
 \jxzd{%教学重点，每行前面要加 \item
-	\item 孔系的宏程序；
-	\item 孔系的编程思路。 }
+	\item Siemens上的编程；
+	\item Siemens上的半径补偿。 }
 \jxnd{%教学难点，每行前面要加 \item
-	\item 孔系的编程思路。 }
+	\item Siemens上的半径补偿。 }
 \jjff{%教学方法
 	通过讲述、举例、演示法来说明；}
 
@@ -28,148 +28,166 @@
 \end{enumerate}
 \subsection{复习导入及主要内容}
 \begin{enumerate}[1、]
-	\item 加工轮廓的处理;
-	\item 极坐标;
-	\item 加工工序。
+\item 子程序Z向分层；
+\item 子程序XY向分层；
+\item 子程序的应用。
 \end{enumerate}
-
 
 \subsection{教学内容及过程}
 
+\subsubsection{Siemens上的程序名}
+Fanuc: O+四位数值 为程序号，
 
-\subsubsection{在Fanuc上用G91+K来实现孔系加工}
+即1号和0001号为同一个程序。
 
-\begin{lstlisting}[language=C]
-O0001
-G54G17G40G49G90
+0-7999： 用户使用。不能加密。
+
+8000-8999： 机床生产商和用户使用，可加密。
+
+9000-9999： 系统开发商使用，可加密。
+
+主程号与子程序号不区分。
+
+Siemens：  前两位为字母，后面任意。不能与系统已有的字
+重名。
+
+GX03  AAA  BBB   可以
+
+GOTO10  CYCLE81   不可以
+
+字程序：   L+四位数值组成
+
+也可以与主程序使用一样的规格。
+
+主程序的扩展名为  MPF
+
+子程序的扩展名为  SPF
+
+\subsubsection{Siemens上的G指令}
+1、G1    G2/G3
+
+Siemens  使用CR=\_\_表示半径。
+
+Siemens上还有其他使用格式。
+
+2、G4  暂停时间
+
+Fanuc： G4 X\_\_/P—  X表示秒，P表示毫秒。
+
+Sienem： G4 F\_\_   F表示秒。
+
+3、G17  G18  G19
+
+4、G20  G21    fanuc上 表示 英制 与公制
+
+G70  G71   Siemens上 表示 英制 与公制
+
+5、G27 G28 G29  Fanuc 表现 回参考点检查  回参考点  从参考点返回。
+
+G74  回参考点
+
+6、G40  G41  G42
+
+补偿号   在Siemens上称为刀沿号
+
+每一把刀具可以有9个切削刀沿。
+
+7、G43 G44  G49  Fanuc 刀具长度补偿
+
+T1D1  Siemens 上自动补偿。
+
+8、G53 G54-G59
+
+\subsubsection{Siemens上其他问题}
+
+1、子程序结束 RET M17
+
+2、子程序的调用 
+
+子程序名  P\_\_ 调用次数
+
+子程序的调用必须单独占用一个程序段。
+
+\subsubsection{Siemens编程实例}
+如图： 在数控机床上加工如图所示的零件，试用siemens
+格式编程。
+
+程序：
+\begin{lstlisting}
+GX01   粗加工
+G54G17G40G90
+T1D1
 M3S500
 G1Z30.F2000
-X0Y0
-G99G81X20.Y20.Z-20.R5.F80 K6
-G1Z30.F2000
+X-55.Y0
+Z5.
+Z0F200
+L1 P4
+Z0
+L2 P2
+Z3.
+Z30.F2000
 M5
-M30
+M2	
 \end{lstlisting}
 
-\subsubsection{宏程序来实现}
+\begin{lstlisting}
+L1   方形轮廓子程序
+G91Z-2.5
+G90
+G41G1X-45.Y0
+G3X-35.Y0CR=10.
+G1Y35.
+X35.
+Y-35.
+X-35.
+Y0
+G3X-45.Y10.CR=10.
+G40G1X-55.Y0
+M17
+\end{lstlisting}
 
-\begin{lstlisting}[language=C]
-#24=  圆周圆心的X坐标绝对值
-#25=  圆周圆心的Y坐标绝对值 
-#26=  孔深Z坐标绝对值 
-#18=  快速趋近点R坐标
-#9=   切削进给速度F
-#4=   圆半径1
-#1=   第一孔的角度
-#2=   增量角B
-#11=  孔数H
-G54G17G40G49G90
+\begin{lstlisting}
+L2  圆形轮廓子程序
+G91G1Z-2.5
+G90
+G41G1X-40.Y-10.
+G3X-30.Y0CH=10.
+G2I30.
+G3X-40.Y10.CH=10.
+G40G1X-55Y0
+RET
+\end{lstlisting}
+
+\begin{lstlisting}
+GX01   精加工
+G54G17G40G90
+T2D1
 M3S800
-G52 X#24 Y#25
-G1 Z30.F2000
-#8=1
-WHILE[#8LE#11] DO1
-#5=#4*COS[#1+[#8-1]*#2]
-#5=#4*SIN[#1+[#8-1]*#2]
-G99G81X#5Y#6Z#26R#18F#9
-#8=#8+1
-END1;
 G1Z30.F2000
-G52 X0 Y0
+X-55.Y0
+Z5.
+Z-7.6F100  
+L1 
+Z-2.5
+L2 
+Z3.
+Z30.F2000
 M5
-M30
+M2
 \end{lstlisting}
-
-
-\subsubsection{方形阵列孔加工}
-
-\begin{lstlisting}[language=C]
-#1= 矩阵孔群横向中心连线与X轴的夹角
-#2= 矩阵孔群横向中心与纵向中心连线角度
-#3= 矩阵横向孔中心距
-#4= 矩阵纵向孔中心距
-#5= 矩阵横向孔数
-#6= 矩阵纵向孔数
-#9= 切削进给速度 Feed
-#18= 固定循环中快速走近R点Z坐标
-#24= 圆心X坐标
-#25= 圆心Y坐标
-#26= 孔深
-G54G17G40G49G90
-M3S500
-G1Z30.F2000
-G52 X#24 Y#25
-G68 X0 Y0 R#1
-#10=1
-WHILE[#10LE#6]DO1
-#11=1 
-WHILE[#11LE#6]DO2
-IF [[#10AND1]EQ0] GOTO1
-#12=#3*[#11-1]+#4*COS[#2]*[#10-1]
-#13=#4*SIN[#2]*[#10-1]
-GOTO5
-N1 #12=#3*[#5-#11]+#4*COS[#2]*[#10-1]
-#13=#4*SIN[#2]*[#10-1]
-N5 G99 G81 X#12 Y#13 Z#26 r#18 F#9
-#11=#11+1
-END2
-#10=#10+1
-END1
-G80G1Z30.F2000
-G69
-G52 X0 Y0
-M5
-M30
-\end{lstlisting}
-
-\subsubsection{圆形阵列孔加工}
-
-\begin{lstlisting}[language=C]
-O0001
-#1=40
-#2=45
-#3=8
-#4=10
-#5=5
-S1000M3
-G54G90  G1 X0 Y0 Z30
-G16
-#6=1
-WHILE[#6LE#3]DO1
-#7=1
-WHILE[#7LE#5]DO2
-#8=#1/2+[#7-1]*#4
-#9=[#6-1]*#2
-G99G81 X#8 Y#9 Z-6 R1 F80
-#7=#7+1
-END2
-#6=#6+1
-END1
-G80G1Z30.F2000
-G15
-M5
-M30
-\end{lstlisting}
-
-\subsubsection{混合孔的加工}
-
-略
-
-
 
 \subsection{课堂小结}
 \begin{enumerate}[1、]
-	\item 在Fanuc上用G91+K来实现孔系加工;
-	\item 宏程序来实现;
-	\item 方形阵列孔加工；
-	\item 圆形阵列孔加工；
-	\item 混合孔的加工。
+	\item Siemens上的程序名；
+	\item Siemens上的G指令；
+	\item Siemen上的子程序；
+	\item Siemens编程实例。
 \end{enumerate}
 
 \vfill
 \subsection{布置作业}
 \begin{enumerate}[1、]
-	\item 写出上面的程序；
-	\item 从习题集上选做一个。
+	\item 用Siemens格式编程一个程序。
 \end{enumerate}
 \vfill
