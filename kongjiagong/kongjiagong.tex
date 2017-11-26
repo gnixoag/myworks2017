@@ -1,8 +1,12 @@
 \documentclass[UTF8,zihao=-4]{ctexbeamer}
 \usepackage{multimedia}
 \usepackage{hyperref}
-
+\usepackage{smartdiagram}
 \usepackage{listings}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,calc}
+\usesmartdiagramlibrary{additions} 
+\setbeamercovered{highly dynamic}
 
 %% 所要粘贴代码的编程语言
 %\lstloadlanguages{}
@@ -49,7 +53,7 @@
 \end{frame}
 
 \begin{frame}{说课内容}
-\begin{columns}
+\begin{columns}[onlytextwidth]
 
 \column[c]{0.1\textwidth}
 	
@@ -67,7 +71,7 @@
 \section{说教材}
 \subsection{教材选择}
 \begin{frame}{教材选择}
-	\begin{columns}
+	\begin{columns}[onlytextwidth]
 		\column{.2\textwidth}
 		\column{.8\textwidth}
 		\begin{enumerate}
@@ -86,21 +90,153 @@
 \subsection{重点难点}
 
 \begin{frame}{重点难点}
-    \begin{columns}
-        \column{.2\textwidth}
-        \column{.8\textwidth}
-        \begin{enumerate}
-            \item 掌握G1与G0的区别。
-            \item 掌握G2/G3的基本应用。
-            \item 能编写圆弧凸台的程序；
-            \item 掌握编程基本思路。
-        \end{enumerate}
-    \end{columns}
+
+\begin{center}
+		\smartdiagramset{border color=none,
+		set color list={blue!50!cyan,green!60!lime,orange!50!red,red!80!black},
+		back arrow disabled=true}
+	\smartdiagram[flow diagram:horizontal]{扽森扽扽三扽扽 up,扽扽我,34东方,扽三的发}
+\end{center}
+
 \end{frame}
+
+\begin{frame}
+	
+	\begin{center}
+
+\smartdiagram[priority descriptive diagram]{
+	Develop a document structure,
+	Choose a document class,
+	Select suitable packages,dsaf撒东方东方}
+
+	\end{center}
+	
+\end{frame}
+
+\begin{frame}{重点难点}
+	
+	\begin{center}
+		
+\smartdiagram[circular diagram:clockwise]{Edit,
+	pdf\LaTeX, Bib\TeX/ biber, make\-index, pdf\LaTeX,狂风e死}
+		
+	\end{center}
+	
+\end{frame}
+
+
+\begin{frame}
+
+\begin{center}
+	\smartdiagram[descriptive diagram]{
+	{Style,{Define shapes, colors, shading,
+			and line styles for nodes and arrows}},
+	{Position, {Place nodes using a matrix,
+			relative or absolute positioning}},
+	{Relation, Insert edges or arrows
+		between selected nodes},
+	{Label, Add labels on edges or arrows}}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}
+	
+\begin{center}
+\smartdiagram[bubble diagram]{\TeX\ engines,
+	\TeX\ (dvi), pdf\TeX, rt, rtrt, Con\TeX t}
+\end{center}
+	
+\end{frame}
+
+
+\begin{frame}
+\begin{center}
+	\smartdiagram[constellation diagram]{\TeX\ software,
+	Editor, Compiler, Converter, PDF Reader}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+	\begin{center}
+		\smartdiagram[flow diagram:horizontal]{Edit,
+			\LaTeX, Bib\TeX/ biber, make\-index, \LaTeX}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}
+	\begin{center}
+\tikzset{
+	planet/.append style={regular polygon, regular polygon sides=6},
+	satellite/.append style={regular polygon, regular polygon sides=6},
+	every picture/.append style={rotate=30},
+	connection planet satellite/.style={
+		bend right/.style=,
+		every edge/.style={fill=\col},
+		to path={
+			\pgfextra
+			\path[draw=none, fill=none] (\tikztostart) 
+			-- coordinate[at start] (@start@) coordinate[at end] (@target@) (\tikztotarget);
+			\endpgfextra
+			\ifnum\xi<\maxsmitem % to disable the last arrow
+			($(@start@)!.6cm!90:(@target@)$) -- ($(@target@)!.25cm!-90:(@start@)$)
+			-- ($(@target@)!.25cm!90:(@start@)$) -- ($(@start@)!.6cm!-90:(@target@)$)
+			-- cycle
+			\fi}}}
+\smartdiagram[connected constellation diagram]{
+	Build a program,
+	Set up,
+	Run,
+	Analyze,
+	Modify/\\Add,
+	Check,
+	and a sixth}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+\begin{center}
+	\smartdiagramset{
+	set color list={red!10, red!30,red!50},
+	sequence item border color=black,
+	sequence item text color=black,
+	sequence item border size=1.2\pgflinewidth,
+	sequence item font size=\scriptsize\sffamily,
+	additions={
+		additional item shape=rectangle,
+		additional item fill color=gray!20,
+		additional item border color=black,
+		additional arrow line width=2pt,
+		additional arrow tip=to,
+		additional arrow color=black,
+		additional item font=\scriptsize\sffamily,
+	}
+}
+\smartdiagramadd[sequence diagram]{step 1,step 2, step 3}
+{above of sequence-item1/input,below of sequence-item2/output 1,below of sequence-item3/output 2}
+\smartdiagramconnect{to-}{sequence-item1/additional-module1}
+\smartdiagramconnect{-to}{sequence-item2/additional-module2}
+\smartdiagramconnect{-to}{sequence-item3/additional-module3}
+\end{center}
+
+\end{frame}
+
+%\begin{frame}
+%\begin{center}
+%	\smartdiagramset{diagram style, module y sep=2.5}
+%	\smartdiagram[flow diagram]{Do, This,For, Me}
+%\end{center}
+%\end{frame}
+
+
+
 
 \section{说教法}
 \begin{frame}{案例分析}
-     \begin{columns}
+     \begin{columns}[onlytextwidth]
         \column{.4\textwidth}
         在数控铣床或加工中心上加工如图所示的零件，试完成程序的编写,已知毛坯为 $\Phi$ 110*30。
         \column{.6\textwidth}
@@ -115,7 +251,7 @@
 \end{frame}
 
 \begin{frame}{手工编程流程}
-    \begin{columns}
+    \begin{columns}[onlytextwidth]
         \column{.2\textwidth}
         \column{.8\textwidth}
 \begin{enumerate}
@@ -133,7 +269,7 @@
 
 \section{说学法}
 \begin{frame}{G0与G1的区别}
-    \begin{columns}
+    \begin{columns}[onlytextwidth]
         \column{.0\textwidth}
         \column{\textwidth}
 \begin{enumerate}
@@ -294,7 +430,20 @@ G3：逆时针方向：右上左
 \end{frame}
 
 
+\AtBeginSection{
+	\begin{frame}{提纲}
+		\tableofcontents[currentsection,hideallsubsections]
+	\end{frame}
+}
+\AtBeginSubsection{
+	\begin{frame}{提纲}
+		\tableofcontents[currentsection,currentsubsection]
+	\end{frame}
+}
+
+
 \section{说教学过程}
+\AtBeginSubsection{
 \begin{frame}{圆弧凸台编程实例}
     \begin{figure}
         \centering
@@ -303,6 +452,7 @@ G3：逆时针方向：右上左
         \label{fig:4-8}
     \end{figure}       
 \end{frame}
+}
 
 \section{说教学反思}
 \begin{frame}{零件编程}
@@ -318,10 +468,11 @@ G3：逆时针方向：右上左
 
 \section*{课堂小结}
 \begin{frame}{课堂小结}
+
     \begin{columns}
         \column{.2\textwidth}
         \column{.8\textwidth}
-\begin{enumerate}
+\begin{enumerate}[<+-> ]
 \item G1与G0的区别。
 \item 圆弧指令的两种方式。
 \item 半径编程的格式。
