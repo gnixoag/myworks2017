@@ -44,7 +44,7 @@
 	
 	\centering	\begin{tabular}[t]{*{4}{l@{~ }}}
 			\includegraphics[width=0.22\linewidth,trim=0 0 0 0,clip,angle=0]{image/1.jpg} & 
-			\includegraphics[width=0.22\linewidth,trim=300 0 0 12cm,clip,angle=0]{image/2.jpg}&
+			\includegraphics[width=0.22\linewidth,trim=300 1.5cm 0 7cm,clip,angle=0]{image/2.jpg}&
 			\includegraphics[width=0.22\linewidth,trim=10cm 0 0 0,clip,angle=0]{image/3.jpg}&
 			\includegraphics[width=0.22\linewidth,trim=10cm 0  0 0,clip,angle=0]{image/4.jpg}
 	\end{tabular}
@@ -63,7 +63,7 @@
 \column[c]{0.6\textwidth}
 \vspace{0.5cm}
 
-\includegraphics[width=0.9\linewidth,trim=300 0 0 12cm,clip,angle=0]{image/2.jpg}
+\includegraphics[width=0.9\linewidth,trim=0 0 0 0,clip,angle=0]{image/2.jpg}
 \end{columns}
 
 \end{frame}
@@ -72,18 +72,41 @@
 \subsection{教材选择}
 \begin{frame}{教材选择}
 	\begin{columns}[onlytextwidth]
-		\column{.2\textwidth}
-		\column{.8\textwidth}
-		\begin{enumerate}
-			\item 掌握G1与G0的区别。
-			\item 掌握G2/G3的基本应用。
-			\item 能编写圆弧凸台的程序；
-			\item 掌握编程基本思路。
-		\end{enumerate}
+		\column{.5\textwidth}
+
+\begin{enumerate}
+   \item 教材：《数控机床编程与操作(数控铣床/加工中心分册)》，中国劳动出版社，沈建峰     
+    \item 参考书：《Fanuc 编程说明书》、《数控加工工艺》
+\end{enumerate}
+   
+    \smartdiagram[diagram]{多种系统}     
+
+	\column{.5\textwidth}
+    \includegraphics[width=0.9\linewidth,trim=0 0 0 0,clip,angle=0]{image/5.jpg}
 	\end{columns}
 \end{frame}
 
 \subsection{教材处理}
+\begin{frame}{教材选用}
+    
+\begin{center}
+\smartdiagramset{border color=none,
+    set color list={blue!50!cyan,green!60!lime,orange!50!red,red!80!black},
+    back arrow disabled=true}
+%\smartdiagram[circular diagram]{一,二,三,四,五}%圆形，逆时针。
+\smartdiagram[circular diagram:clockwise]{一,二,三,四,五}%圆形，顺时针。
+%\smartdiagram[flow diagram]{一,二,三,四,五}%垂直流线。
+%\smartdiagram[flow diagram:horizontal]{一,二,三,四,五}%水平流线。
+%\smartdiagram[descriptive diagram]{{一,{一一}},{二,{二二}},{三,{三三}},{四,{四四}},{五,{五五}}}%详细
+%\smartdiagram[priority descriptive diagram]{一,二,三,四,五}%层次详细
+%\smartdiagram[bubble diagram]{一,二,三,四,五}%中心主题
+%\smartdiagram[constellation diagram]{一,二,三,四,五}%中心主题，带箭头。
+%\smartdiagram[connected constellation diagram]{一,二,三,四,五}%中心主题，子项相连。
+%\smartdiagram[sequence diagram]{{一,{一一}},{二,{二二}},{三,{三三}},{四,{四四}},{五,{五五}}}%箭头向前。
+\end{center}
+    
+\end{frame}
+
 
 \subsection{教学目标}
 
@@ -107,7 +130,7 @@
 \smartdiagram[priority descriptive diagram]{
 	Develop a document structure,
 	Choose a document class,
-	Select suitable packages,dsaf撒东方东方}
+	Select suitable packages}
 
 	\end{center}
 	
