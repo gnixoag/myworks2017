@@ -1,4 +1,4 @@
-\documentclass[UTF8,zihao=-4]{ctexbeamer}
+\documentclass[UTF8,zihao=-4,handout,smaller,aspectratio=1610]{ctexbeamer}
 \usepackage{multimedia}
 \usepackage{hyperref}
 \usepackage{smartdiagram}
@@ -75,14 +75,20 @@
 		\column{.5\textwidth}
 
 \begin{enumerate}
-   \item 教材：《数控机床编程与操作(数控铣床/加工中心分册)》，中国劳动出版社，沈建峰     
-    \item 参考书：《Fanuc 编程说明书》、《数控加工工艺》
+   \item<1-> 教材：《数控机床编程与操作(数控铣床/加工中心分册)》，中国劳动出版社，沈建峰     
+    \item<2->参考书：《Fanuc 编程说明书》、《数控加工工艺》
 \end{enumerate}
-   
-    \smartdiagram[diagram]{多种系统}     
+    \onslide+<3-> 与本校系统相同 \onslide+<4-> 劳动出版社，重视技能
+   \smartdiagramset{border color=none,
+   	set color list={blue!50!cyan,green!60!lime,orange!50!red,red!80!black},
+   	back arrow disabled=true,
+%   module minimum width=5cm,
+%   module minimum height=1cm,
+text width=10cm}
+   \smartdiagram[flow diagram:horizontal]{多种系统dsf三扽分登封等扽个}     
 
 	\column{.5\textwidth}
-    \includegraphics[width=0.9\linewidth,trim=0 0 0 0,clip,angle=0]{image/5.jpg}
+    \onslide<1->\includegraphics[width=0.9\linewidth,trim=0 0 0 0,clip,angle=0]{image/5.jpg}
 	\end{columns}
 \end{frame}
 
