@@ -1,5 +1,5 @@
-\documentclass[UTF8,zihao=-4]{ctexbeamer}
-%\documentclass[UTF8,zihao=-4,handout,smaller,aspectratio=1610]{ctexbeamer}
+\documentclass[utf8,zihao=-4]{ctexbeamer}
+%\documentclass[utf8,zihao=-4,handout,smaller,aspectratio=1610]{ctexbeamer}
 \usepackage{multimedia}
 \usepackage{hyperref}
 \usepackage{smartdiagram}
@@ -18,24 +18,24 @@
 	showstringspaces=false, %设定是否显示代码之间的空格符号
 	numbers=left,% 在左边显示行号
 	numberstyle=\tiny, % 设定行号字体的大小
-	basicstyle=\footnotesize,% 设定字体大小\tiny, \small, \Large等等
+	basicstyle=\footnotesize,% 设定字体大小\tiny, \small, \large等等
 	keywordstyle=\color{blue!70}, commentstyle=\color{red!50!green!50!blue!50},% 关键字高亮
 	frame=shadowbox, % 给代码加框
 	rulesepcolor=\color{red!20!green!20!blue!20},
 	escapechar=`, % 中文逃逸字符，用于中英混排
 	xleftmargin=2em,xrightmargin=2em, aboveskip=1em,
-	breaklines,% 这条命令可以让LaTeX自动将长的代码行换行排版
+	breaklines,% 这条命令可以让latex自动将长的代码行换行排版
 	extendedchars=false % 这一条命令可以解决代码跨页时，章节标题，页眉等汉字不显示的问题
 }
 
-\usetheme{Madrid}
+\usetheme{madrid}
 %\useoutertheme{miniframes}
 
 \usecolortheme{orchid}
 \title{ 孔加工概述~~说课}
 \author{高星}
 \institute{湖南潇湘技师学院~湖南九嶷职院}
-\date{2017.12.1\left }
+\date{2017.12.1}
 \begin{document}
     
 \begin{frame}[plain]
@@ -76,9 +76,9 @@
 
 \begin{enumerate}
    \item<1-> 教材：《数控机床编程与操作(数控铣床/加工中心分册)》，中国劳动出版社，沈建峰     
-    \item<2->参考书：《Fanuc 编程说明书》、《数控加工工艺》
+     
 \end{enumerate}
-    \onslide+<3-> 
+    \onslide<2-> 
 \smartdiagramset{border color=black,%边界颜色
    	set color list={blue!50!cyan,green!60!lime,orange!50!red,red!80!black},%颜色列表
     module x sep=5cm,%向间距
@@ -100,9 +100,39 @@ text width=4cm,%文本宽度
 	\end{columns}
 \end{frame}
 
-\subsection{教材内容}
-\begin{frame}{教材内容}
-    
+\begin{frame}{参考书}
+	 \begin{itemize}
+	 	\item<1->《国家职业标准----加工中心操作工》，劳动社会保障出版社
+	 	\item<2->《加工中心编程与操作》，科学出版社，主编刘加孝 
+	 	\item<3->《数控铣削宏程序及应用实例》，机械工业出版社，陈海舟
+	 	\item<4-> 《fanuc 编程说明书》、《数控加工工艺》
+
+	 	
+	 \end{itemize}
+% \centering
+ \hspace{2cm}\includegraphics<1->[width=0.22\linewidth,trim=0 0 0 0,clip,angle=0]{image/7.jpg}~~ 
+ \includegraphics<2->[width=0.22\linewidth,trim=0 0 0  0,clip,angle=0]{image/6.jpg}~~
+\includegraphics<3->[width=0.22\linewidth,trim=0 0 0 0,clip,angle=0]{image/8.jpg} 
+ 
+\end{frame}
+
+
+
+
+
+
+\subsection{教材中的位置与地位}
+\begin{frame}{教材中的位置与地位}
+ 	\begin{columns}[onlytextwidth]
+ 	\column{.4\textwidth}
+ 	 \begin{itemize}
+ 		\item<1->《国家职业标准---加工中心操作》手工编程必考内容
+ 		
+ 		\item<2->比赛手工编程四大结构之一
+ 		
+ 		\item<3-> 教材第二章第三节、第四章第三节
+	\end{itemize}
+ 	\column{.6\textwidth}
 \begin{center}
 \smartdiagramset{border color=black,%边界颜色
     set color list={blue!50!cyan,green!60!lime,orange!50!red,red!80!black,blue!50!cyan,green!60!lime,orange!50!red,red!80!black},%颜色列表
@@ -114,19 +144,16 @@ text width=4cm,%文本宽度
     back arrow disabled=true,%是否箭头返回
     %   module minimum width=5cm,%最小宽度
     %module minimum height=2cm,%最小高度
-   text width=8cm,%文本宽度
+    text width=8cm,%文本宽度
     bubble fill opacity=0
 }
 \scalebox{0.7}{
 \smartdiagram[connected constellation diagram]{数控铣编\\程与操作,基本知识,平面加工,外形加工,挖槽加工,孔加工,简化编程}%中心主题
 }
 
-\pause 地位作用 
-
-\pause  圆形槽加工
 \end{center}
 
-    
+	\end{columns}    
 \end{frame}
 
 \subsection{主题安排}
@@ -147,46 +174,82 @@ text width=4cm,%文本宽度
             bubble fill opacity=0
         }
         \scalebox{0.7}{
-            \smartdiagram[connected constellation diagram]{孔加工,孔加工概述,Fanuc孔加工编程及工艺,Fanuc孔加工详解,Siemen孔加工编程,机床操作}%中心主题
+            \smartdiagram[connected constellation diagram]{孔加工,孔加工概述,Fanuc孔加工编程及工艺,fanuc孔加工详解,Siemen孔加工编程,仿真及机床操作}%中心主题
         }
 \end{center}
 \end{frame}
 
-
-
-
+\subsection{主题分析}
+\begin{frame}{主题分析}
+	\begin{columns}[onlytextwidth]
+	\column{.1\textwidth}
+	\column{.8\textwidth}
+	\begin{itemize}
+		\item<1-> 前面学习了挖槽加工，其中有圆形槽加工。
+		\item<2-> 后面要学Fanuc、Siemens孔加工固定循环。
+		\item<3-> 孔加概述承前启后主要为后面的学习打基础。
+		
+		
+	\end{itemize}
+   \vspace{0.5cm}
+	\includegraphics<1->[width=0.33\linewidth,trim=400 300 600 400,clip,angle=0]{image/9.jpg}~~ 
+	\includegraphics<2->[width=0.33\linewidth,trim=0 0 0  0,clip,angle=0]{image/1.jpg}~~
+	\includegraphics<3->[width=0.33\linewidth,trim=10cm 0 0 0,clip,angle=0]{image/3.jpg}
+	\column{.1\textwidth}
+	 \end{columns}
+\end{frame}
 
 \subsection{教学目标}
 \begin{frame}{教学目标}
  \begin{columns}[onlytextwidth]
-    \column{.2\textwidth}
-
-    \column{.8\textwidth}
-        \begin{block}{教学目标}
-        \begin{enumerate}
-            \item dfdsafasdf 
-            \item asdfsdf 
+    \column{.15\textwidth}
+    \column{.7\textwidth}
+    \begin{block}{知识目标}
+        \begin{enumerate}[<+->]
+            \item 掌握孔加工的方式；
+            \item 掌握传统孔加工的刀具；
+            \item 了解铣孔与传统孔加工的区别；
+            \item 掌握孔加工的6个动作与3个平面；
+            \item 能结合子程序编写孔加工程序；
         \end{enumerate}
     \end{block}
-    
-\end{columns}
+    \column{.15\textwidth}
+ \end{columns}
 \end{frame}
 
-
-
+\begin{frame}{教学目标}
+	\begin{columns}[onlytextwidth]
+		\column{.15\textwidth}
+		\column{.7\textwidth}
+		\begin{block}{能力目标}
+			\begin{enumerate}[<+->]
+				\item ；
+				\item 掌握传统孔加工的刀具；
+				\item 了解铣孔与传统孔加工的区别；
+				\item 掌握孔加工的6个动作与3个平面；
+				\item 能结合子程序编写孔加工程序；
+			\end{enumerate}
+		\end{block}
+		\column{.15\textwidth}
+	\end{columns}
+\end{frame}
 
 \subsection{重点难点}
-
 \begin{frame}{重点难点}
  \begin{columns}[onlytextwidth]
-    \column{.2\textwidth}
-    \begin{block}
-    \end{block}
-    \column{.8\textwidth}
+	\column{.2\textwidth}
+	\column{.6\textwidth}
+	\begin{block}{重点难点}
+		\begin{enumerate}[<+->]
+			\item 掌握孔加工的方式；
+			\item 掌握传统孔加工的刀具；
+			\item 了解铣孔与传统孔加工的区别；
+			\item 掌握孔加工的6个动作与3个平面；
+			\item 能结合子程序编写孔加工程序；
+		\end{enumerate}
+	\end{block}
+	\column{.2\textwidth}
 \end{columns}
-
-
-
 \end{frame}
 
 
@@ -194,7 +257,7 @@ text width=4cm,%文本宽度
 \begin{frame}{案例分析}
      \begin{columns}[onlytextwidth]
         \column{.4\textwidth}
-        在数控铣床或加工中心上加工如图所示的零件，试完成程序的编写,已知毛坯为 $\Phi$ 110*30。
+        在数控铣床或加工中心上加工如图所示的零件，试完成程序的编写,已知毛坯为 $\phi$ 110*30。
         \column{.6\textwidth}
 
 \begin{figure}
@@ -224,15 +287,15 @@ text width=4cm,%文本宽度
 
 
 \section{说学法}
-\begin{frame}{G0与G1的区别}
+\begin{frame}{g0与g1的区别}
     \begin{columns}[onlytextwidth]
         \column{.0\textwidth}
         \column{\textwidth}
 \begin{enumerate}
-    \item 指令格式不同：G1使用前必须用F设定进给速度，G0的速度与F无关 
-    \item 运动轨迹不同：G0为快速定位，其路径可能为直线，也可能为折线。G1为直线插补，其路径为直线。
-    \item 进给速度不同：G0的速度由机床参数及快速倍率决定，档位少。G1的速度由F及进给倍率决定，可调档位多。
-    \item 功能用途不同：G0用于加工前的定位及加工后的提刀，G1用于车削加工
+    \item 指令格式不同：g1使用前必须用f设定进给速度，g0的速度与f无关 
+    \item 运动轨迹不同：g0为快速定位，其路径可能为直线，也可能为折线。g1为直线插补，其路径为直线。
+    \item 进给速度不同：g0的速度由机床参数及快速倍率决定，档位少。g1的速度由f及进给倍率决定，可调档位多。
+    \item 功能用途不同：g0用于加工前的定位及加工后的提刀，g1用于车削加工
 \end{enumerate}
     \end{columns}
 \end{frame}
@@ -264,13 +327,13 @@ text width=4cm,%文本宽度
         \column{.2\textwidth}
         \column{0.6\textwidth}
         \begin{enumerate}
-            \item 圆弧编程 (R)
-            \item 圆心编程 (IJK)
+            \item 圆弧编程 (r)
+            \item 圆心编程 (ijk)
         \end{enumerate}
          \vspace{1cm}
-         圆心编程 (IJK)为标准格式，自动编程常用，手工编程一般用于整圆。
+         圆心编程 (ijk)为标准格式，自动编程常用，手工编程一般用于整圆。
          
-         圆弧编程 (R)，指令符合图样标注，使用较多。
+         圆弧编程 (r)，指令符合图样标注，使用较多。
          \column{.2\textwidth}
     \end{columns}
 \end{frame}
@@ -280,20 +343,20 @@ text width=4cm,%文本宽度
         \column{0.6\textwidth}
 
  \begin{enumerate}
-     \item XY平面的圆弧 
+     \item xy平面的圆弧 
    
- G17  G2/G3  G90/G91 X\_ Y\_ R\_ F\_
+ g17  g2/g3  g90/g91 x\_ y\_ r\_ f\_
  
- \item ZX平面的圆弧 
+ \item zx平面的圆弧 
    
- G18 G2/G3 G90/G91 Z\_ X\_ R\_ F\_
+ g18 g2/g3 g90/g91 z\_ x\_ r\_ f\_
  
-\item  YZ平面的圆弧   
+\item  yz平面的圆弧   
  
- G19 G2/G3 G90/G91 Y\_ Z\_ R\_ F\_
+ g19 g2/g3 g90/g91 y\_ z\_ r\_ f\_
  
  \end{enumerate}
-  对于我们学校的一般用G17平面
+  对于我们学校的一般用g17平面
         \column{.4\textwidth}
         \begin{figure}
             \centering
@@ -314,25 +377,25 @@ text width=4cm,%文本宽度
         
       指令格式的说明
       
-      G17	指定圆弧在XpYp平面
+      g17	指定圆弧在xpyp平面
       
-      G18	指定圆弧在XpZp平面
+      g18	指定圆弧在xpzp平面
       
-      G19	指定圆弧在YpZp平面
+      g19	指定圆弧在ypzp平面
       
-      G02	顺时针方向圆弧插补（CW）
+      g02	顺时针方向圆弧插补（cw）
       
-      G03	逆时针方向圆弧插补（CCW）
+      g03	逆时针方向圆弧插补（ccw）
       
-      X\_\_	终点的X坐标
+      x\_\_	终点的x坐标
       
-      Y\_\_	终点的Y坐标
+      y\_\_	终点的y坐标
       
-      Z\_\_	终点的Z坐标
+      z\_\_	终点的z坐标
       
-      R\_\_	圆弧半径指定的带符号的圆弧半径
+      r\_\_	圆弧半径指定的带符号的圆弧半径
       
-      F\_\_	沿圆弧的进给率           
+      f\_\_	沿圆弧的进给率           
         
         \column{.1\textwidth}
     \end{columns}
@@ -344,9 +407,9 @@ text width=4cm,%文本宽度
     \begin{columns}
 
         \column{0.6\textwidth}
-G2：顺时针方向：左上右 （拧紧水平盖）
+g2：顺时针方向：左上右 （拧紧水平盖）
 
-G3：逆时针方向：右上左
+g3：逆时针方向：右上左
 
 在数学上，规定顺时针旋转的角为负角，逆时针旋转的角为正角。
 
@@ -376,7 +439,7 @@ G3：逆时针方向：右上左
 \end{figure}        
 \end{frame}
 
-\begin{frame}{G91/G90}
+\begin{frame}{g91/g90}
  \begin{figure}
      \centering
      \includegraphics[width=0.5\linewidth,trim=50 150 50 100,clip]{image/4.jpg}
@@ -391,7 +454,7 @@ G3：逆时针方向：右上左
 		\tableofcontents[currentsection,hideallsubsections]
 	\end{frame}
 }
-\AtBeginSubsection{
+\AtBeginSection{
 	\begin{frame}{提纲}
 		\tableofcontents[currentsection,currentsubsection]
 	\end{frame}
@@ -399,7 +462,7 @@ G3：逆时针方向：右上左
 
 
 \section{说教学过程}
-\AtBeginSubsection{
+\AtBeginSection{
 \begin{frame}{圆弧凸台编程实例}
     \begin{figure}
         \centering
@@ -429,7 +492,7 @@ G3：逆时针方向：右上左
         \column{.2\textwidth}
         \column{.8\textwidth}
 \begin{enumerate}[<+-> ]
-\item G1与G0的区别。
+\item g1与g0的区别。
 \item 圆弧指令的两种方式。
 \item 半径编程的格式。
 \item 方向的判断。
@@ -453,8 +516,8 @@ G3：逆时针方向：右上左
 \vfill
 
 \flushleft \footnotesize   
-~~~QQ:32731964\\
-~~~TEL:18974681118\\
+~~~qq:32731964\\
+~~~tel:18974681118\\
 %~~~课件下载:\\
 %~~~https://github.com/gnixoag/myworks2017/tree/master/jiaoshichengzhang
 
@@ -488,7 +551,5 @@ G3：逆时针方向：右上左
     \end{center}
     
 \end{frame}
-
-
 
 \end{document} 
