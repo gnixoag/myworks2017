@@ -192,7 +192,7 @@ text width=4cm,%文本宽度
 	\begin{itemize}
 		\item<1-> 前面学习了挖槽加工，其中有圆形槽加工。
 		\item<2-> 后面要学Fanuc、Siemens孔加工固定循环。
-		\item<3-> 孔加概述承前启后主要为后面的学习打基础。
+		\item<3-> 孔加工概述承前启后主要为后面的学习打基础。
 	\end{itemize}
    \vspace{0.5cm}
 	\includegraphics<1->[width=0.33\linewidth,trim=400 300 600 400,clip,angle=0]{image/9.jpg}~~ 
@@ -394,18 +394,14 @@ text width=4cm,%文本宽度
 \begin{frame}{孔加工方式}
 	\begin{columns}
 		\column{.05\textwidth}
-		\column{.6\textwidth}
+		\column{.7\textwidth}
 \begin{block}{视频内容选择}
-	\begin{description}
-\item[知识内容：]中心孔、钻孔，镗孔、铰孔、攻丝。
-\item [扩展内容：]钻方孔，分割钻。
-
-\item [工厂现场：]6S要求讲解，别人的习惯。
-
-\item [安全意识：]有安全隐患的视频
-
-\item [铣削圆槽：]在后面播放
-	\end{description}
+	\begin{itemize}
+	\item 知识内容：中心孔、钻孔，镗孔、铰孔、攻丝。
+	\item 扩展内容：钻方孔，分割钻。
+	\item 工厂现场：6S要求讲解，别人的习惯。
+	\item 安全意识：有安全隐患的视频。
+	\end{itemize}
 	|\end{block}		
 	
 		\column{.0\textwidth}
@@ -415,14 +411,11 @@ text width=4cm,%文本宽度
 \begin{frame}{孔加工方式}
 	\begin{columns}
 		\column{.05\textwidth}
-		\column{.6\textwidth}
+		\column{.7\textwidth}
 		\begin{block}{知识内容：}
 				  中心孔、钻孔，镗孔、铰孔、攻丝。
 			|\end{block}
 
-
-		
-		
 		\column{.0\textwidth}
 	\end{columns}
 
@@ -531,7 +524,7 @@ text width=4cm,%文本宽度
 	\vspace{25pt}
 	
 	\includegraphics[width=0.3\linewidth,trim=0 0 0 0,clip,angle=0]{image/zhuikong.jpg}~
-	\includegraphics[width=0.3\linewidth,trim=0 0 0 0,clip,angle=0]{image/fukong.jpg}`
+	\includegraphics[width=0.3\linewidth,trim=0 0 0 0,clip,angle=0]{image/zhuimian.jpg}`
 	\includegraphics[width=0.3\linewidth,trim=0 0 0 0,clip,angle=0]{image/tangwaixing.jpg}
 	
 \end{frame}
@@ -692,42 +685,27 @@ BT40镗刀柄、钻夹刀柄、柔性刀柄
 		\column{0\textwidth}
 		\column{\textwidth}
 		
-		视频演示
-		
-\centering
-\includegraphics[width=.2\linewidth,trim=0 0 0  0,clip,angle=0]{image/21}~
-\includegraphics[width=0.2\linewidth,trim=0 0 0 0,clip,angle=0]{image/22}~
-\includegraphics[width=0.2\linewidth,trim=0 0 0 0,clip,angle=0]{image/23}~
-
-		\column{0\textwidth}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{铣孔与传统孔加工}
-	\begin{columns}
-		\column{0\textwidth}
-		\column{\textwidth}
-		
-		铣孔视频
+		视频演示、分析讨论引导。
 		
 		提问，为什么要用那么多的刀具传统加工孔
 		
-		引导学生思考：成形原理，受力方向，
-		精度
-		应用场合。
+		引导学生思考：成形原理，受力方向，精度，应用场合。
 		\column{0\textwidth}
 	\end{columns}
-\end{frame}
+\includegraphics[width=.5\linewidth,trim=0 0 0  0,clip,angle=0]{image/2-1.jpg}~
+\includegraphics[width=.5\linewidth,trim=0 0 0  0,clip,angle=0]{image/xiluowen2.jpg}~
 
+\end{frame}
 
 \begin{frame}{孔加工的6个步骤与三个平面}
 	\begin{columns}
-		\column{0\textwidth}
-		\column{\textwidth}
+		\column{.5\textwidth}
+				\includegraphics[width=\linewidth,trim=0 0 0 0 ,clip,angle=0]{image/44.jpg}~
+		\column{.5\textwidth}
 		
-		实例视频
+		总结、视频回放、引导分析、画图。
 		
-		总结步骤
+		孔加工的6个步骤
 		
 		编程的三个平面以及与加工孔的关系。
 		
@@ -738,35 +716,75 @@ BT40镗刀柄、钻夹刀柄、柔性刀柄
 \begin{frame}{孔加工编程}
 	\begin{columns}
 		\column{0\textwidth}
-		\column{\textwidth}
+		\column{.5\textwidth}
 		
-	编写一个孔的程序
+		模仿法：
+		
+\begin{itemize}
+	\item 	教师分析每一个过程，
 	
-	编写两个孔的程序
+	\item 编写第一个孔的程序
 	
-	分析总结 利用 子程序改写
+	\item 学生模仿编写第二个孔加工程序。
 	
-	模仿使用增量编写。
+	\item 找规律，用子程序
 	
-		\column{0\textwidth}
+	\item 模仿使用增量编写。
+	
+	\item （仿真）
+\end{itemize}
+	
+		\column{0.5\textwidth}
+		\includegraphics[width=\linewidth,trim=0 0 0  0,clip,angle=0]{image/31.jpg}~
 	\end{columns}
+
+\end{frame}
+
+\begin{frame}{小结作业}
+	\begin{columns}
+		\column{0\textwidth}
+		\column{.5\textwidth}
+		
+		请学生自己总结；
+		
+	   作业：省技能抽查题 H2-6。
+		
+		\column{0.5\textwidth}
+		\includegraphics[width=\linewidth,trim=0 0 0  0,clip,angle=0]{image/66}~
+	\end{columns}
+	
 \end{frame}
 
 \section{说教学反思}
 \begin{frame}{说教学反思}
     \begin{columns}
         \column{0\textwidth}
-        \column{\textwidth}
+        \column{0.5\textwidth}
         
         教学目标反思
-        
+          
+          达到知识目标、能力目标、情感目标。
+          
         教学效果
-          仿真(键盘鼠标)
+          
+          看视频学生很认真：
+                   		
+          
+          
+          学生程序能上电脑上仿真更好
+          
+          (一体机没有键盘鼠标不好用)  
         
-        分析学生
+        \column{0.4\textwidth}
         
-        \column{0\textwidth}
+        \includegraphics[width=0.7\linewidth,trim=0 0 0  0,clip,angle=0]{image/2}~
+        
+
+        \includegraphics[width=0.7\linewidth,trim=0 0 0  0,clip,angle=0]{image/IMG_20171123_162200}
+        
+        
     \end{columns}
+
 \end{frame}
 
 
