@@ -1,0 +1,236 @@
+\usepackage[utf8]{inputenc}
+
+\usepackage[paperwidth=36.8cm,paperheight=26cm,
+top=2cm,bottom=2cm,right=2cm,left=3.cm,
+columnsep=1.5cm]{geometry}
+\columnseprule=.4pt
+
+\usepackage{bbding}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{wasysym}
+\usepackage{makeidx}
+
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{tabu}
+\usepackage{paralist}
+\usepackage{lastpage}
+\usepackage{enumerate} 
+
+%%%% 设置listings宏包用来粘贴源代码
+%% 方便粘贴源代码，部分代码高亮功能
+\usepackage{listings}
+
+%% 所要粘贴代码的编程语言
+%\lstloadlanguages{}
+
+%% 设置listings宏包的一些全局样式
+%% 参考http://hi.baidu.com/shawpinlee/blog/item/9ec431cbae28e41cbe09e6e4.html
+\lstset{
+	showstringspaces=false,              %% 设定是否显示代码之间的空格符号
+	numbers=left,                        %% 在左边显示行号
+	numberstyle=\tiny,                   %% 设定行号字体的大小
+	basicstyle=\footnotesize,                    %% 设定字体大小\tiny, \small, \Large等等
+	keywordstyle=\color{blue!70}, commentstyle=\color{red!50!green!50!blue!50},
+	%% 关键字高亮
+	frame=shadowbox,                     %% 给代码加框
+	rulesepcolor=\color{red!20!green!20!blue!20},
+	escapechar=`,                        %% 中文逃逸字符，用于中英混排
+	xleftmargin=2em,xrightmargin=2em, aboveskip=1em,
+	breaklines,                          %% 这条命令可以让LaTeX自动将长的代码行换行排版
+	extendedchars=false                  %% 这一条命令可以解决代码跨页时，章节标题，页眉等汉字不显示的问题
+}
+%%%% listings宏包设置结束
+
+
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{0pt}
+\pagestyle{fancy}
+\fancyfoot[CO,CE]{第~\thepage~页~~共~\pageref{LastPage}~页}
+\fancyhead[RE]{\leavevmode\vbox to0pt{
+		\vss\rlap{\putzdxx }\vskip -26cm }} %奇数页眉的右边                       
+\fancyhead[LO]{\leavevmode\vbox to0pt{
+		\vss\rlap{\putzdx }\vskip -26cm }} %偶数页眉的左边 
+
+\newsavebox{\zdxa}%装订线
+
+\sbox{\zdxa}
+{\parbox{27cm}{\centering \heiti \hspace{1cm}
+		系~部：\underline{\makebox[30mm][c]{}}~~~ 班~级：\underline{\makebox[45mm][c]{}}~~~ 姓~名：\underline{\makebox[30mm][c]{}}~~~ 学~号：\underline{\makebox[30mm][c]{}} \\
+		\vspace{1mm}
+%		请在所附答题纸上空出密封位置。并填写试卷序号、班级、学号和 姓名\\
+		%答题时学号
+%		\vspace{1mm}
+	  \dotfill{} 〇 \dotfill{} 密\dotfill{}封\dotfill{}线\dotfill{}〇\dotfill{} \\
+}}
+\newsavebox{\zdxb}%装订线
+\sbox{\zdxb}
+{\parbox{27cm}{\centering \heiti
+		\vspace{30mm}
+		\vspace{1mm}
+		\dotfill{} 〇 \dotfill{}密\dotfill{}封\dotfill{}线\dotfill{}〇\dotfill{} \\
+}}
+
+\newcommand{\putzdx}{
+		\hspace{-1.7cm}\parbox{1cm}{\vspace{-1.5cm}
+			\rotatebox[origin=c]{90}{
+				\usebox{\zdxa}
+		}}
+}
+\newcommand{\putzdxx}{
+	\hspace{0.3cm}\parbox{1cm}{\vspace{-1.5cm}
+		\rotatebox[origin=c]{-90}{
+			\usebox{\zdxb}
+	}}
+}
+
+
+\usepackage{ifthen}
+
+%选择题选项命令 \xx \xxiii \xxv \xxvi
+\newlength{\la}
+\newlength{\lb}
+\newlength{\lc}
+\newlength{\ld}
+\newlength{\lee}
+\newlength{\lf}
+\newlength{\lhalf}
+\newlength{\lquarter}
+\newlength{\lmax}
+\newcommand{\xx}[4]{\\[.5pt]%  
+	\settowidth{\la}{A、#1~~~}  
+	\settowidth{\lb}{B、#2~~~}
+	\settowidth{\lc}{C、#3~~~}  
+	\settowidth{\ld}{D、#4~~~}  
+	\ifthenelse{\lengthtest{\la > \lb}}
+	{\setlength{\lmax}{\la}}{\setlength{\lmax}{\lb}}  
+		\ifthenelse{\lengthtest{\lmax < \lc}}  {\setlength{\lmax}{\lc}}  {}  \ifthenelse{\lengthtest{\lmax < \ld}}  {\setlength{\lmax}{\ld}}  {} 
+	    \setlength{\lhalf}{0.5\linewidth} 
+	    \setlength{\lquarter}{0.25\linewidth}
+	    \ifthenelse{\lengthtest{\lmax > \lhalf}}  
+	    {\noindent{}A、#1 \\ B、#2 \\ C、#3 \\ D、#4 }  {  \ifthenelse{\lengthtest{\lmax > \lquarter}}  
+	    	{\noindent
+	    	 \makebox[\lhalf][l]{A、#1~~~}% 
+	    	 \makebox[\lhalf][l]{B、#2~~~}\\%
+	    	 \makebox[\lhalf][l]{C、#3~~~}%
+	    	 \makebox[\lhalf][l]{D、#4~~~}}% 
+    		 {\noindent\makebox[\lquarter][l]{A、#1~~~}% 
+    		 \makebox[\lquarter][l]{B、#2~~~}%     
+    		 \makebox[\lquarter][l]{C、#3~~~}%      
+    		 \makebox[\lquarter][l]{D、#4~~~}}
+    	 }}
+     
+\newcommand{\xxiii}[3]{\\[.5pt]%  
+	\settowidth{\la}{A、#1~~~}  
+	\settowidth{\lb}{B、#2~~~}
+	\settowidth{\lc}{C、#3~~~}  
+	\ifthenelse{\lengthtest{\la > \lb}}
+	{\setlength{\lmax}{\la}}{\setlength{\lmax}{\lb}}  
+	\ifthenelse{\lengthtest{\lmax < \lc}}  {\setlength{\lmax}{\lc}}  {}  
+	\setlength{\lhalf}{0.5\linewidth} 
+	\setlength{\lquarter}{0.25\linewidth}
+	\ifthenelse{\lengthtest{\lmax > \lhalf}}  
+	{\noindent{}A、#1 \\ B、#2 \\ C、#3 }  {  \ifthenelse{\lengthtest{\lmax > \lquarter}}  
+		{\noindent
+			\makebox[\lhalf][l]{A、#1~~~}% 
+			\makebox[\lhalf][l]{B、#2~~~}\\%
+			\makebox[\lhalf][l]{C、#3~~~}}% 
+		{\noindent
+			\makebox[\lquarter][l]{A、#1~~~}% 
+			\makebox[\lquarter][l]{B、#2~~~}%     
+			\makebox[\lquarter][l]{C、#3~~~}}
+}}
+
+\newcommand{\xxv}[5]{\\[.5pt]%  
+	\settowidth{\la}{A、#1~~~}  
+	\settowidth{\lb}{B、#2~~~}
+	\settowidth{\lc}{C、#3~~~} 
+	\settowidth{\ld}{D、#4~~~}  
+	\settowidth{\lee}{E、#5~~~}   
+	\ifthenelse{\lengthtest{\la > \lb}}
+	{\setlength{\lmax}{\la}}{\setlength{\lmax}{\lb}}  
+	\ifthenelse{\lengthtest{\lmax < \lc}}  {\setlength{\lmax}{\lc}}  {} 
+	\ifthenelse{\lengthtest{\lmax < \ld}}  {\setlength{\lmax}{\ld}}  {} 
+	\ifthenelse{\lengthtest{\lmax < \lee}}  {\setlength{\lmax}{\lee}}  {} 
+	\setlength{\lhalf}{0.5\linewidth} 
+	\setlength{\lquarter}{0.25\linewidth}
+	\ifthenelse{\lengthtest{\lmax > \lhalf}}  
+	{\noindent{}A、#1 \\ B、#2 \\ C、#3 \\ D、#4 \\ E、#5}  {  \ifthenelse{\lengthtest{\lmax > \lquarter}}  
+		{\noindent
+			\makebox[\lhalf][l]{A、#1~~~}% 
+			\makebox[\lhalf][l]{B、#2~~~}\\%
+			\makebox[\lhalf][l]{C、#3~~~}%
+		    \makebox[\lhalf][l]{D、#4~~~}\\%
+		    \makebox[\lhalf][l]{E、#5~~~}}% 
+		{\noindent
+			\makebox[\lquarter][l]{A、#1~~~}% 
+			\makebox[\lquarter][l]{B、#2~~~}%     
+			\makebox[\lquarter][l]{C、#3~~~}%
+		    \makebox[\lquarter][l]{D、#4~~~}\\%
+	        \makebox[\lquarter][l]{E、#5~~~}}
+}}
+
+\newcommand{\xxvi}[6]{\\[.5pt]%  
+	\settowidth{\la}{A、#1~~~}  
+	\settowidth{\lb}{B、#2~~~}
+	\settowidth{\lc}{C、#3~~~} 
+	\settowidth{\ld}{D、#4~~~}  
+	\settowidth{\lee}{E、#5~~~}
+	\settowidth{\lf}{E、#6~~~}     
+	\ifthenelse{\lengthtest{\la > \lb}}
+	{\setlength{\lmax}{\la}}{\setlength{\lmax}{\lb}}  
+	\ifthenelse{\lengthtest{\lmax < \lc}}  {\setlength{\lmax}{\lc}}  {} 
+	\ifthenelse{\lengthtest{\lmax < \ld}}  {\setlength{\lmax}{\ld}}  {} 
+	\ifthenelse{\lengthtest{\lmax < \lee}}  {\setlength{\lmax}{\lee}}  {}
+    \ifthenelse{\lengthtest{\lmax < \lf}}  {\setlength{\lmax}{\lf}}  {}  
+	\setlength{\lhalf}{0.5\linewidth} 
+	\setlength{\lquarter}{0.25\linewidth}
+	\ifthenelse{\lengthtest{\lmax > \lhalf}}  
+	{\noindent{}A、#1 \\ B、#2 \\ C、#3 \\ D、#4 \\ E、#5 \\ F、#6}  {  \ifthenelse{\lengthtest{\lmax > \lquarter}}  
+		{\noindent
+			\makebox[\lhalf][l]{A、#1~~~}% 
+			\makebox[\lhalf][l]{B、#2~~~}\\%
+			\makebox[\lhalf][l]{C、#3~~~}%
+			\makebox[\lhalf][l]{D、#4~~~}\\%
+			\makebox[\lhalf][l]{E、#5~~~}%
+		    \makebox[\lhalf][l]{F、#6~~~}}% 
+		{\noindent
+			\makebox[\lquarter][l]{A、#1~~~}% 
+			\makebox[\lquarter][l]{B、#2~~~}%     
+			\makebox[\lquarter][l]{C、#3~~~}%
+			\makebox[\lquarter][l]{D、#4~~~}\\%
+			\makebox[\lquarter][l]{E、#5~~~}%
+		    \makebox[\lquarter][l]{F、#6~~~}}%
+}}
+
+%填空题画线  \tk
+%\newcommand{\tk}[2][2.5]{\; \underline{\hspace{#1 cm} \hphantom{#2} \hspace{#1 cm} } \, }
+
+
+%判断题后面加括号
+\newcommand{\pd}[2][1]{\nolinebreak\dotfill\mbox{\raisebox{-1.8pt}
+		{$\cdots$}(\makebox[#1 cm][c]{
+		\ifthenelse{\boolean{print}}
+		{\ifthenelse{\equal{#2}{t}}{\Checkmark}{\XSolid}}
+		{}
+		})}}
+
+\newboolean{print}
+\setboolean{print}{true}
+
+\usepackage{ulem}
+\newcommand{\tk}[2][0.5]{\;\uline{ 
+		\hspace*{#1 cm}
+		 \ifthenelse{\boolean{print}}{#2}{\hphantom{#2}}  
+	 	 \hspace*{#1 cm}
+ 	 } }
+  
+\newcommand{\jd}[2][4]{\par
+\begin{minipage}[t][#1cm][t]{0.92\linewidth}	
+	\ifthenelse{\boolean{print}}{#2}{}  
+\end{minipage} 
+}	
+
+
