@@ -36,87 +36,142 @@
 \end{enumerate}
 
 \subsection{教学内容及过程}
+\subsubsection{SIEMENS 孔加工循环概述}
+SIEMENS上的固定循环就是一些工艺子程序,分为钻削循环
+、钻孔样式循环和铣削循环。
+
+名称如下：
+
+\begin{enumerate}
+	\item 钻孔循环 
+\begin{itemize}
+\item 	CYCLE81    钻孔，中心钻孔 
+\item CYCLE82    中心钻孔 
+\item CYCLE83    深度钻孔 
+\item CYCLE84    刚性攻丝 
+\item CYCLE840   带补偿卡盘攻丝 
+\item CYCLE85    铰孔1(镗孔1) 
+\item CYCLE86    镗孔(镗孔2) 
+\item CYCLE87    铰孔2(镗孔3) 
+\item CYCLE88    镗孔时可以停止1(镗孔4) 
+\item CYCLE89    镗孔时可以停止2(镗孔5)
+
+\end{itemize}
+\vspace{10pt}
+
+\item 钻孔样式循环  
+\begin{itemize}
+	\item HOLES1    加工一排孔 
+\item HOLES2    加工一圈孔  
+\end{itemize}
+\vspace{10pt}
+\item 铣削循环 
+\begin{itemize}
+	\item CYCLE71    端面铣削 
+\item CYCLE72    轮廓铣削 
+\item CYCLE76    矩形过渡铣削 
+\item CYCLE77    圆弧过渡铣削 
+\item LONGHOLE   槽 
+\item SLOT1    圆上切槽 
+\item SLOT2    圆周切槽 
+\item POCKET3    矩形凹槽 
+\item POCKET4    圆形凹槽 
+\item CYCLE90    螺纹铣削
+\end{itemize}
+
+\end{enumerate}
+\vspace{10pt}
+编程器中图形循环支持，根据图形直观的输入参数。
+
 \subsubsection{孔加工固定循环指令}
-为了简化编程，节省存储空间，把孔加工过程做成固定循环，存储在CNC系统中。Fanuc上的固定循环有G73、G74、G76、G81-G89，其指令格式如下：
 
-\[ 
-\left\lbrace 
-\begin{array}{c}
-G90 \\ G91
-\end{array} 
-\right\rbrace 
-\left\lbrace 
-\begin{array}{c}
-G99 \\ G98
-\end{array} 
-\right\rbrace  
- G\_ X\_ Y\_ Z\_ R\_ Q\_ K\_ F\_    \]
+钻孔，中心孔－CYCLE81
 
-说明：
+格式：CYCLE81(RTP，RFP，SDIS，DP，DPR)
 
-（1）G90/G91：绝对值与增量值，如图11-2，左G90,右G91
+RTP 后退平面(绝对) 
 
-（2）G98/G99:返回平面选择
+RFP 参考平面(绝对) 
 
-G98返回初始平面
+SDIS 安全间隙(无符号输入) 
 
-G99返回R点平面
+DP 最后钻孔深度(绝对) 
 
-（3）G：孔加工方式
-
-（4）X、Y：孔加工的位置
-
-（5）Z：孔底平面的位置（G91时是R点到孔底的增量值）
-
-（6）R：R点平面的位置（G91时是初始平面到孔
-R点平面的增量值，G90时是R点平面Z向绝对坐标）
-
-（7）参数Q：G73、G74深孔中每次Z向进刀量，G76、G87镗孔中的偏移量
-
-（8）参数P：有孔底暂停的暂停时间
-
-（9）参数F：孔加工中的切削速度
-
-（10）参数K、L：固定循环重复次数，结合G91功能更大。
+DPR相当于参考平面的最后钻孔深度(无符号输入)
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.7\linewidth]{data/image/21-1}
-	\caption{孔加式中的G90与G91}
-	\label{fig:21-1}
+	\includegraphics[width=0.7\linewidth]{data/image/23-1}
+	\caption{动作顺序}
+	\label{fig:23-1}
 \end{figure}
 
-注意：孔加工固定循环指令为模态指令，要用G80或01组的指令取消。孔加工参数（重复次数KL除外）也是模态的，在被改变和取消之前一直保持，即使是孔加工方式被改变，也保持。
+如果一个值同时输入给DP和DPR，最后钻孔深度则来自DPR。
 
+CYCLE82(RTP，RFP，SDIS，DP，DPR，DTB)
 
+RTP Real 后退平面(绝对)
 
-\subsubsection{孔加工方式其参数}
-G81 X\_ Y\_ Z\_ R\_ F\_；用于浅孔，中心孔
+RFP Real 参考平面(绝对) 
 
-G82 X\_ Y\_ Z\_ R\_ P\_ F\_；用于钻孔、锪孔等 
+SDIS Real 安全间隙(无符号输入) 
 
-G73 X\_ Y\_ Z\_ R\_ Q\_ F\_；用于深孔（把深孔当作几个浅孔）
+DP Real 最后钻孔深度(绝对)
+ 
+DPR Real 相当于参考平面的最后钻孔深度(无符号输入) 
 
-G85 X\_ Y\_ Z\_ R\_ F\_；用于铰孔（与G81不同的是慢速提刀）
+DTB Real 最后钻孔深度时的停顿时间(断屑)
 
-G84 X\_ Y\_ Z\_ R\_ P\_ F\_；用于右螺纹攻丝
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{data/image/23-2}
+	\caption{动作顺序}
+	\label{fig:23-2}
+\end{figure}
 
-其它：
+CYCLE85(RTP，RFP，SDIS，DP，DPR，DTB，FFR，RFF)
 
-G74 X\_ Y\_ Z\_ R\_ P\_ F\_；用于左螺纹攻丝
+RTP Real 退回平面(绝对值) 
 
-G76 X\_ Y\_ Z\_ R\_ P\_ Q\_ F\_；用于精镗孔
+RFP Real 参考平面(绝对值) 
 
-G83 X\_ Y\_ Z\_ R\_ Q\_ F\_；用于深孔、小孔（可排屑）
+SDIS Real 安全间隙(无符号输入) 
 
-G86 X\_ Y\_ Z\_ R\_ F\_；用于镗孔（孔底主轴停）
+DP Real 最后钻孔深度(绝对值) 
 
-G87 X\_ Y\_ Z\_ R\_ P\_ Q\_ F\_；反向镗孔
+DPR Real 相对于参考平面的最后钻孔深度(无符号输入) 
 
-G86 X\_ Y\_ Z\_ R\_ F\_；有手动返回的镗孔
+DTB Real 最后钻孔深度时的停顿时间(断屑) 
 
-G89 X\_ Y\_ Z\_ R\_ P\_ F\_；镗孔（与G85不同的是有孔底暂停）
+FFR Real 进给率 
 
+RFF Real 退回进给率
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{data/image/23-3}
+	\caption{动作顺序}
+	\label{fig:23-3}
+\end{figure}
+
+注意： 循环调用前设定好率，主轴转速和和转向，
+循环调用前必须使刀具到达钻孔位置，
+之前的G功能，之后还有效。
+
+\subsubsection{模态调用}
+
+在有MCALL指令的程序段中调用子程序，如果其后的程序段中含有轨迹运行，则子程序会自动调用。该调用一直有效，直到调用下一个程序段。 
+
+用MCALL指令模态调用子程序的程序段以及模态调用结束指令均需要一个独立的程序段。
+
+比如可以使用MCALL指令来方便地加工各种排列形状的孔。
+
+N10 MCALL CYCLE82(…)      ;钻削循环82 
+
+N20 HOLES1(…)    ;行孔循环，在每次到达孔位置之
+后，使用传送参数执行CYCLE82(…)循环 
+
+N30 MCALL    ;结束CYCLE82(…)的模态调用
 
 \subsubsection{加工实例}
 
@@ -141,51 +196,34 @@ $\varnothing $ 10机用铰刀 S300 F50 Z-32.0 (比30多2mm)
 
 4、参考程序：
 \begin{lstlisting}
-
-O0001;(钻中心孔)
-G54 G17 G40 G49 G90;
-M3 S1200;
-G0 Z30.0;
-G99 G81 X-30.0 Y-20.0 Z-6.0 R5.0 F120;
+GX01
+G54G17G40G90
+M3S1000
+G1Z30.F2000
+F60
+MCALL CYCLE81(30,0,3,-8,8)
+G0X-30Y20
 X0
-X30.0
+Y20
+X30
 Y0
+Y-20
 X0
-X-30.0
-Y20.0
-X0
-G98 X30.0
+X-30
+Y0
+MCALL
 M5
-M30
-
+M2
 \end{lstlisting}
 
-\begin{lstlisting}
-
-O0001;(钻孔)
-G55 G17 G40 G49 G90;
-M3 S500;
-G0 Z30.0;
-G99 G83 X-30.0 Y-20.0 Z-6.0 R5.0 Q5.0 F60;
-X0
-X30.0
-Y0
-X0
-X-30.0
-Y20.0
-X0
-G98 X30.0
-M5
-M30
-\end{lstlisting}
 
 
 \subsection{课堂小结}
 \begin{enumerate}[1、]
-\item Fanuc孔加工指令；
-\item Fanuc 孔加工应用；
-\item Fanuc 孔加工编程；
-\item 编程实例。
+\item Siemens孔加工循环概述；
+\item 孔加工固定循环指令；
+\item 模态调用；
+\item 加工实例。
 \end{enumerate}
 
 \vfill
