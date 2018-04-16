@@ -1,0 +1,159 @@
+\jxhj{%教学后记
+	}
+\skrq{%授课日期
+	2017年12月28日 4-5节}
+\ktmq{%课题名称
+	 坐标系旋转}
+\jxmb{%教学目标，每行前面要加 \item
+	\item 掌握Fanuc上的坐标系旋转指令；
+	\item 掌握Siemens上的坐标系旋转指令；
+	\item 会使用旋转指令编程。}
+\jxzd{%教学重点，每行前面要加 \item
+	\item Fanuc上的坐标系旋转指令；
+	\item Siemens上的坐标系旋转指令。 }
+\jxnd{%教学难点，每行前面要加 \item
+	\item 使用旋转指令编程。 }
+\jjff{%教学方法
+	通过讲述、举例、演示法来说明；}
+
+\makeshouye %制作教案首页
+
+%%%%教学内容
+\subsection{组织教学}
+\begin{enumerate}[\hspace{2em}1、]
+	\item 集中学生注意力；
+	\item 清查学生人数；
+	\item 维持课堂纪律；
+\end{enumerate}
+
+\subsection{复习导入及主要内容}
+\begin{enumerate}[1、]
+\item 加工轮廓的处理；
+\item 极坐标；
+\item 编程实例。
+\end{enumerate}
+
+\subsection{教学内容及过程}
+\subsubsection{旋转可用于以下几种情况}
+	1、编程轮廓与工件安装面成一定角度。
+	
+	2、有多个旋转的相同轮廓。
+	
+	3、同一轮廓上有多个旋转的要素。
+	
+	4、其它简化程序的地方
+	
+\subsubsection{要素及原理}
+	1、旋转指令的要素：
+	
+	旋转平面
+	
+	旋转中心
+	
+	旋转角度
+	
+	2、原理：
+	
+	在CNC内部对目标点进行转换(我们不用管它)
+	
+	$X'=X*COSA+Y*SINA$
+	
+	$Y'=Y*COSA-X*SINA$
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth,trim=50 285 50  250,clip]{data/image/31-1}
+		\caption{原理}
+		\label{fig:31-1}
+	\end{figure}
+	
+	图中的A为-45度（即从X------X’的方向）
+	
+	
+\subsubsection{Fanuc指令格式}
+
+G17
+
+G18 G68 $\alpha$\_ $\beta$\_ R\_; 坐标系旋转开始
+
+G19
+
+:                  坐标系旋转模式 
+
+:                  ( 坐标系被旋转 )
+
+G69;                坐标系旋转取消模式
+
+说明：
+
+G17(G18或G19): 选择包含有被旋转图形的平面
+
+$\alpha$\_ $\beta$\_ :         对应当前平面指令(G17,G18或G19)中的两个轴的绝对指令。
+
+此指令指定了G68后面指定旋转中心的坐标。
+
+R\_    :         正值为逆时针方向的角度位移。参数5400Bit0指定角度位移是绝对值位移或者由G码（G90或G91）来决定绝对值或相对值。
+
+最小输入增量: 0.001度
+
+有效数据范围: -360.000------360.000
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth,trim=0 0 0 0,clip]{data/image/31-2}
+	\caption{角度}
+	\label{fig:31-2}
+\end{figure}	
+
+注意事项：
+
+1、$\alpha$\_ $\beta$\_省略时，默认的旋转中心为刀具当前位置。
+
+2、程序的开头要加上G69安全注消指令。
+
+3、在坐标系旋转后，执行刀具半径补偿、刀具长度补偿、刀具偏置和其它补偿等，要在坐标系旋转取消前取消补偿。
+
+4、在坐标系旋转中，不得执行与坐标系有关的指令。如：G27、G28、G29、G30，G52-G59。
+
+5、坐标系旋转取消（G69）后的第一个指令必须用绝对值编程。用增量值则不能正确的执行。
+
+6、坐标系G68后的第一个指令应用绝对值编程，用增量值编程，则    会以刀具当前为中心进行第二次旋转，如图\ref{fig:31-3}所示：
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth,trim=0 0 0 0,clip]{data/image/31-3}
+	\caption{编程}
+	\label{fig:31-3}
+\end{figure}
+
+7、有多个旋转时，旋转中的终点应与下一个旋转的启点重合。或者另外增加路径定位。
+
+\subsubsection{Sienes指令格式}
+
+功能：在当前的平面G17或G18或G19中执行旋转，值为 RPL=\_\_\_\_，单位为度。
+
+编程：    ROT RPL=\_\_\_\_;  可编程旋转，删除以前的偏移，旋转，比例系数和镜像指令。
+
+AROT RPL=\_\_\_\_; 可编程旋转，附加于当前的指令
+
+ROT    没有设定值：删除以前的偏移，旋转，比例系数和镜象
+
+ROT/AROT指令要求一个独立的程序段。
+
+注意：旋转中心始终在工件坐标系原点
+
+工件坐标系原点可以通过TRANS X\_\_\_\_ Y\_\_\_\_ 进行平移。
+
+\subsection{课堂小结}
+\begin{enumerate}[1、]
+\item 旋转应用情况；
+\item 旋转指令的要素；
+\item Fanuc指令格式；
+\item Siemens指令格式。
+\end{enumerate}
+
+\vfill
+\subsection{布置作业}
+\begin{enumerate}[1、]
+	\item 综合习题一。
+\end{enumerate}
+\vfill
