@@ -110,7 +110,7 @@
 %{}{\titlerule*[8pt]{.} \contentspage}
 %\include{data/sec16}
 
-\setcounter{section}{0}%重新计数
+%\setcounter{section}{0}%重新计数
 \ctexset {
 	section = {
 		name = {实习},
@@ -131,76 +131,25 @@
 \zihao{-4}	
 
 \newpage 
-%\begin{figure}[!h]
-%	\centering	
-%	\includegraphics[height=\textwidth,angle=90]{images/shijuan1}
-%\end{figure}
-%\begin{figure}[!h]
-%	\centering	
-%	\includegraphics[height=\textwidth,angle=90]{images/shijuan2}
-%\end{figure}
-%\begin{figure}[!h]
-%	\centering	
-%	\includegraphics[height=\textwidth,angle=90]{images/shijuan3}
-%\end{figure}
-%\begin{figure}[!h]
-%	\centering	
-%	\includegraphics[height=\textwidth,angle=90]{images/shijuan4}
-%\end{figure}
-
-%\newpage
-%\begin{figure}[!h]
-%	\centering	
-%	\includegraphics[width=0.9\textwidth,angle=0]{images/fenshu1}
-%\end{figure}
-%\begin{figure}[!h]
-%	\centering	
-%	\includegraphics[width=0.9\textwidth,angle=0]{images/fenshu2}
-%\end{figure}
-%\begin{figure}[!h]
-%	\centering	
-%	\includegraphics[width=0.9\textwidth,angle=0]{images/fenshu3}
-%\end{figure}
-%\begin{figure}[!h]
-%	\centering	
-%	\includegraphics[width=0.9\textwidth,angle=0]{images/fenshu4}
-%\end{figure}
-%\begin{figure}[!h]
-%	\centering	
-%	\includegraphics[width=0.9\textwidth,angle=0]{images/fenshu5}
-%\end{figure}
-%\begin{figure}[!h]
-%	\centering	
-%	\includegraphics[width=0.9\textwidth,angle=0]{images/fenshu6}
-%\end{figure}
-%\begin{figure}[!h]
-%	\centering	
-%	\includegraphics[width=0.9\textwidth,angle=0]{images/fenshu7}
-%\end{figure}
-%\begin{figure}[!h]
-%	\centering	
-%	\includegraphics[width=0.9\textwidth,angle=0]{images/fenshu8}
-%\end{figure}
-%
 \newgeometry{top=2cm, bottom=1.5cm, left=2cm, right=2cm,includefoot}
-%\newpage
-%\include{data/shijuanfenxi}
-%
-%\newpage
-%\include{data/pingshichengji}
-%
+
 \newpage
 \thispagestyle{empty}
 \addcontentsline{toc}{section}{期末试卷}
 \includepdf[pages={-},landscape=true]{shijuan.pdf}
 
+\newpage
 \addcontentsline{toc}{section}{期末试卷答案}
 \includepdf[pages={-},landscape=true]{shijuan-daan.pdf}
 
+\newpage
 \addcontentsline{toc}{section}{学生成绩}
-学生成绩
+\includepdf[pages={-},landscape=true]{chenzhi.pdf}
+
+\newpage
 \addcontentsline{toc}{section}{试卷分析}
-试卷分析
+\include{data/shijuanfenxi}
+
 \newpage
 \addcontentsline{toc}{section}{教学总结}
 \renewcommand{\baselinestretch}{1.3}
@@ -234,10 +183,7 @@
 在仿真课上，学生们的自觉性较差时，最好安排课题让学生们做。
 要进一步的加强教学管理，并及时与班主任进行联系，沟通。
 以便取得更好的教学效果。
-%
-%}
-%
-%
+
 \newpage
 \addcontentsline{toc}{section}{封面-后}
 \pagestyle{empty}
