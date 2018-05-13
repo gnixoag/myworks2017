@@ -82,7 +82,7 @@
 		\centering
 	\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 		\hline 
-		&  \multicolumn{4}{|c|}{1}& \multicolumn{4}{|c|}{1} \\ 
+		&  \multicolumn{4}{c|}{1}& \multicolumn{4}{c|}{1} \\ 
 		\hline 
 		& 1 & 2 & 3 & 4 & 1 & 2 & 3 & 4 \\ 
 		\hline 
@@ -217,10 +217,10 @@ D.	检查刀具是不是在其正上方10mm
 \subsubsection{加工准备}
 \begin{enumerate}[1、]
 \item 设备：数控铣床、加工中心。
-\item 材料：45圆钢（Ф110*35）。
+\item 材料：45圆钢（$\varnothing$110*35）。
 \item 工具：活动扳手，平行垫铁，百分表，其它常用辅具。
 \item 量具：外径千分尺（0~25、100~125，0.01），深度千分尺（0~25，0.01），R规。
-\item 刀具：Ф10、Ф16、Ф14立铣刀、Ф64面铣刀。
+\item 刀具：$\varnothing$10、$\varnothing$16、$\varnothing$14立铣刀、$\varnothing$64面铣刀。
 \item 夹具：三爪自定心卡盘、螺杆压板、平口钳。
 \end{enumerate}
 \subsubsection{课题评分表}
@@ -229,37 +229,54 @@ D.	检查刀具是不是在其正上方10mm
 %\begin{figure}[!hbtp]
 %	\centering	
 \footnotesize
-\hspace{-2.8ex} \renewcommand\arraystretch{1.9}
+\hspace{-3.9ex} \renewcommand\arraystretch{1.9}
 \begin{tabu} to 0.5\textwidth {|cc|c|c|c|c|c|c|}
 	\hline 
 \multicolumn{2}{|c|}{工件编号}  &\multicolumn{2}{c}{} & \multicolumn{2}{|c}{总得分}   & \multicolumn{2}{|c|}{ }   \\ 
 	\hline 
  \multicolumn{2}{|c|}{项目与配分} &\parbox{2ex}{序号}  & 技术要求 & 配分 & 评分标准 &  \parbox{4ex}{检测记录}& 得分 \\ 
 	\hline 
-\multirow{4}{*}{ \parbox{4ex}{工件加工 （80）}} &\multicolumn{1}{|c|}{上面}  & 1 &面铣  & 4 & 超差全扣 & & \\ 
-	\cline{2-8}  
-	 &\multicolumn{1}{|c|}{上面}   & 2 &尺寸1  & 12 & 超差全扣 & & \\ 
-	\cline{2-8} 
-	 &\multicolumn{1}{|c|}{上面}  & 3 &尺寸2  & 12& 超差全扣 & & \\ 
-	\cline{2-8} 
-	 &\multicolumn{1}{|c|}{上面}   & 4&椭圆  & 30 & 超差全扣 & & \\ 
-	\hline 
- \multicolumn{2}{|c|}{\multirow{2}{*}{\parbox{10ex}{程序与工艺
- 		（10\%）} } }&5  &程序正确合理  & 5 & 每错一处扣2分 &  &  \\ 
+	
+ \multicolumn{2}{|c|}{\multirow{3}{*}{\parbox{10ex}{  找正
+ 		（25\%）} } }&1  &百分表的使用  &7 & 出错一处扣2分 &  &  \\ 
 	\cline{3-8} 
-&&6&加工工序卡  &5  &不合理每处扣2分  &&  \\ 
+&&2&虎钳及工件的找正  &9  &操作不正确全扣  &&  \\ \cline{3-8} 
+&&3&工件上表面的找正  &9  &操作不正确全扣  &&  \\
 	\hline 
- \multicolumn{2}{|c|}{\multirow{2}{*}{\parbox{10ex}{机床操作
- 		（10\%）}
- } } &7 &机床操作规范  & 5 & 出错一次扣2分 &  &  \\ 
+	
+ \multicolumn{2}{|c|}{\multirow{2}{*}{\parbox{10ex}{刀具的安装
+ 		（15\%）}
+ } } &4 &刀具的安装  & 7 & 出错一次扣2分 &  &  \\ 
 \cline{3-8} 
-&&8&工件刀具装夹  &5  &出错一次扣2分&&  \\ 
+&&5&刀库中刀具的安装  &8  &出错一次扣2分&&  \\ 
 \hline 	
+
+ \multicolumn{2}{|c|}{\multirow{2}{*}{\parbox{10ex}{主轴的调速
+			（15\%）}
+} } &6 &主轴的转向  & 7 & 出错一次扣2分 &  &  \\ 
+\cline{3-8} 
+&&7&主轴转速的调节  &8  &出错一次扣2分&&  \\ 
+\hline 
+
+ \multicolumn{2}{|c|}{\multirow{3}{*}{\parbox{10ex}{  对刀
+			（25\%）} } }&8  &XY向“取中法”对刀  &18 & 操作不正确全扣 &  &  \\ 
+\cline{3-8} 
+&&9&Z向对刀  &10  &操作不正确全扣  &&  \\ \cline{3-8} 
+&&10&寻边器、Z轴对刀仪的使用  &7 &出错一处扣2分  &&  \\
+\hline 
+
+ \multicolumn{2}{|c|}{\multirow{2}{*}{\parbox{10ex}{机床操作
+			（10\%）}
+} } &11 &机床操作规范  & 5 & 出错一次扣2分 &  &  \\ 
+\cline{3-8} 
+&&12&工件刀具装夹  &5  &出错一次扣2分&&  \\ 
+\hline 
+
  \multicolumn{2}{|c|}{\multirow{2}{*}{\parbox{10ex}{安全文明生产
  		（倒扣分）}
- } } &9  &安全操作  & 倒扣 & \multirow{2}{*}{\parbox{14ex}{安全事故停止操作或酌情扣分}}&  &  \\ 
+ } } &13  &安全操作  & 倒扣 & \multirow{2}{*}{\parbox{14ex}{安全事故停止操作或酌情扣分}}&  &  \\ 
 \cline{3-5} \cline{7-8} 
-&&10&机床整理  &倒扣  &  &  &\\ 
+&&14&机床整理  &倒扣  &  &  &\\ 
 \hline 	
 \end{tabu} }
 %\end{figure}
